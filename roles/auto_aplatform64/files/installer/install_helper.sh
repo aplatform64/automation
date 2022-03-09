@@ -85,6 +85,10 @@ function InstallAPlatform64 {
     return 0
   fi
 
+  if [[ -n "$APLATFORM64_PATH_REGISTRY" ]]; then
+    bl64_check_directory "$APLATFORM64_PATH_REGISTRY" || return 1
+  fi
+
   if [[ ! -r "$APLATFORM64_CMD_VEW" ]]; then
     bl64_msg_show_error "VEW not found ($APLATFORM64_CMD_VEW). Please install it and try again"
     return 1
@@ -120,7 +124,12 @@ auto_aplatform64_installer_site: "$APLATFORM64_SITE"
 EEOF
 
   for Module in $APLATFORM64_MODULES; do
-    ansible-galaxy collection install "serdigital64.${Module}" || return 1
+    if [[ -n "$APLATFORM64_PATH_REGISTRY" ]]; then
+      Module="${APLATFORM64_PATH_REGISTRY}/serdigital64-${Module}.tar.gz"
+    else
+      Module="serdigital64.${Module}"
+    fi
+    ansible-galaxy collection install "$Module" --upgrade --force || return 1
   done
 
   if [[ $APLATFORM64_BECOME == 1 ]]; then

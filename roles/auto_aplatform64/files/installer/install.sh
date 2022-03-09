@@ -13,7 +13,7 @@
 #######################################
 
 # shellcheck disable=SC1091
-source './bashlib64.bash'
+source "${BASH_SOURCE[0]%/*}/bashlib64.bash" || { echo "Error: unable to load bashlib64" && exit 1; }
 
 function aplatform64_InstallOSPackage {
 
@@ -131,7 +131,7 @@ function aplatform64_CreateUsers {
 
   if [[ ! -d "/home/${APLATFORM64_USR_CONTROL_NAME}" ]]; then
     "${BL64_SUDO_CMD_SUDO}" \
-      "${BL64_OS_CMD_USERADD}" -m \
+      "${BL64_IAM_ALIAS_USERADD}" -m \
       -c "Ansible Controller management user" \
       -s "/bin/bash" \
       "${APLATFORM64_USR_CONTROL_NAME}" \
@@ -266,7 +266,7 @@ function aplatform64_SanityCheck {
     bl64_log_error "Unsuported linux platform ($BL64_OS_DISTRO)" && return 1
 
   bl64_check_command "$BL64_SUDO_CMD_SUDO" || return 1
-  bl64_check_command "$BL64_OS_CMD_USERADD" || return 1
+  bl64_check_command "$BL64_IAM_ALIAS_USERADD" || return 1
   bl64_check_command "$BL64_OS_CMD_AWK" || return 1
 
   bl64_check_file "$APLATFORM64_SCRIPT_PATH/install_helper.sh" || return 1
@@ -325,7 +325,7 @@ function aplatform64_SanityCheck {
 function aplatform64_Help() {
 
   bl64_msg_show_usage \
-    '[-x] [-6] [-p] [-w] [-u] [-s] [-a] [-k] [-t SITE]  [-y PYTHON] [-m USER] [-v VENV] [-r PATH] [-o PATH] [-h]' \
+    '[-x] [-6] [-p] [-w] [-u] [-s] [-a] [-k] [-t SITE]  [-y PYTHON] [-m USER] [-v VENV] [-r PATH] [-o PATH] [-l PATH] [-h]' \
     'Install the A:Platform64 environment' \
     '
   -x        : Run all installation steps: Python (-p), VEW (-w), Ansible (-a), account (-u), sudo rule (-s), A:Platform64 (-6)
@@ -346,7 +346,9 @@ function aplatform64_Help() {
   -m USER   : Control node account login name. Default: ${APLATFORM64_USR_CONTROL_NAME}
   -v VENV   : Python virtual environment name where Ansible will be installed to. Default: ${APLATFORM64_VENVIRONMENT}
   -r PATH   : Install path for collections and configurations. Default: ${APLATFORM64_PATH_ROOT}
-  -o PATH   : VariableInstall path for temporary and run-time data. Default: ${APLATFORM64_PATH_VAR}"
+  -o PATH   : Install path for temporary and run-time data. Default: ${APLATFORM64_PATH_VAR}
+  -l PATH   : Path to local collection packages. Default: none (use Ansible Galaxy repository)
+  "
 
 }
 
@@ -386,6 +388,7 @@ export APLATFORM64_PATH_INSTALLER_YML=''
 export APLATFORM64_PATH_ETC=''
 export APLATFORM64_PATH_ETC_CFG=''
 export APLATFORM64_PATH_INSTALLER_OPTIONS=''
+export APLATFORM64_PATH_REGISTRY=''
 
 export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 
@@ -401,7 +404,7 @@ declare aplatform64_InstallAll=0
 declare aplatform64_UpdateSudoers=0
 
 [[ -z "$aplatform64_CommandLine" ]] && aplatform64_Help 1 && exit 1
-while getopts ':xhuawsk6pt:m:y:v:o:r:' aplatform64_Option; do
+while getopts ':xhuawsk6pt:m:y:v:o:r:l:' aplatform64_Option; do
   case "$aplatform64_Option" in
   x)
     aplatform64_InstallAll=1
@@ -438,6 +441,7 @@ while getopts ':xhuawsk6pt:m:y:v:o:r:' aplatform64_Option; do
   o) APLATFORM64_PATH_VAR="$OPTARG" ;;
   v) APLATFORM64_VENVIRONMENT="$OPTARG" ;;
   y) APLATFORM64_CMD_PYTHON3="$OPTARG" ;;
+  l) APLATFORM64_PATH_REGISTRY="$OPTARG" ;;
   h) aplatform64_Help && exit ;;
   \?) aplatform64_Help && exit 1 ;;
   esac
