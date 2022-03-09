@@ -12,9 +12,6 @@
 #
 #######################################
 
-# shellcheck disable=SC1091
-source "${BASH_SOURCE[0]%/*}/bashlib64.bash" || { echo "Error: unable to load bashlib64" && exit 1; }
-
 function aplatform64_InstallOSPackage {
 
   local PythonPackage="$1"
@@ -74,9 +71,9 @@ function aplatform64_PrepareHelpers {
 
     # shellcheck disable=SC2086
     "$BL64_SUDO_CMD_SUDO" $BL64_OS_ALIAS_CP_FILE \
-      "${APLATFORM64_SCRIPT_PATH}/install.sh" \
-      "${APLATFORM64_SCRIPT_PATH}/install_helper.sh" \
-      "${APLATFORM64_SCRIPT_PATH}/install_helper.yml" \
+      "${APLATFORM64_SCRIPT_PATH}/${APLATFORM64_CMD_INSTALLER}" \
+      "${APLATFORM64_SCRIPT_PATH}/${APLATFORM64_HELPER_SH}" \
+      "${APLATFORM64_SCRIPT_PATH}/${APLATFORM64_HELPER_YML}" \
       "${APLATFORM64_SCRIPT_PATH}/bashlib64.bash" \
       "$APLATFORM64_PATH_BIN" \
       2>&1 | bl64_log_record 'base-chown'
@@ -114,7 +111,7 @@ function aplatform64_UpdateSudoers {
   aplatform64_PrepareHelpers || return 1
 
   $BL64_SUDO_ALIAS_SUDO_ENV \
-    "${APLATFORM64_PATH_BIN}/install_helper.sh" 'sudoers' \
+    "${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_SH}" 'sudoers' \
     2>&1 | bl64_log_record 'install_helper-sudoers'
   Status=$?
   ((Status != 0)) && bl64_log_error 'Unable to update sudoers'
@@ -154,8 +151,8 @@ function aplatform64_InstallPython {
   bl64_log_task 'Install Tools'
 
   case "$BL64_OS_DISTRO" in
-  UBUNTU-*|DEBIAN-*) PythonPackage='debianutils' ;;
-  FEDORA-*|CENTOS-*|OL-*) PythonPackage='which' ;;
+  UBUNTU-* | DEBIAN-*) PythonPackage='debianutils' ;;
+  FEDORA-* | CENTOS-* | OL-*) PythonPackage='which' ;;
   esac
   aplatform64_InstallOSPackage $PythonPackage
 
@@ -195,12 +192,12 @@ function aplatform64_InstallVEW {
 
   bl64_log_task 'Install VEW'
   if [[ "$APLATFORM64_USR_CONTROL_NAME" == "$APLATFORM64_USR_CURRENT" ]]; then
-    "${APLATFORM64_PATH_BIN}/install_helper.sh" 'vew' \
+    "${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_SH}" 'vew' \
       2>&1 | bl64_log_record 'install_helper-vew'
     Status=$?
   else
     $BL64_SUDO_ALIAS_SUDO_ENV --user "$APLATFORM64_USR_CONTROL_NAME" \
-      "${APLATFORM64_PATH_BIN}/install_helper.sh" 'vew' \
+      "${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_SH}" 'vew' \
       2>&1 | bl64_log_record 'install_helper-vew'
     Status=$?
   fi
@@ -218,12 +215,12 @@ function aplatform64_InstallAnsible {
 
   bl64_log_task 'Install Ansible'
   if [[ "$APLATFORM64_USR_CONTROL_NAME" == "$APLATFORM64_USR_CURRENT" ]]; then
-    "${APLATFORM64_PATH_BIN}/install_helper.sh" 'ansible' \
+    "${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_SH}" 'ansible' \
       2>&1 | bl64_log_record 'install_helper-ansible'
     Status=$?
   else
     $BL64_SUDO_ALIAS_SUDO_ENV --user "$APLATFORM64_USR_CONTROL_NAME" \
-      "${APLATFORM64_PATH_BIN}/install_helper.sh" 'ansible' \
+      "${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_SH}" 'ansible' \
       2>&1 | bl64_log_record 'install_helper-ansible'
     Status=$?
   fi
@@ -242,12 +239,12 @@ function aplatform64_InstallAPlatform64 {
 
   bl64_log_task 'Install A:Platform64'
   if [[ "$APLATFORM64_USR_CONTROL_NAME" == "$APLATFORM64_USR_CURRENT" ]]; then
-    "${APLATFORM64_PATH_BIN}/install_helper.sh" 'aplatform64' \
+    "${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_SH}" 'aplatform64' \
       2>&1 | bl64_log_record 'install_helper-aplatform64'
     Status=$?
   else
     $BL64_SUDO_ALIAS_SUDO_ENV --user "$APLATFORM64_USR_CONTROL_NAME" \
-      "${APLATFORM64_PATH_BIN}/install_helper.sh" 'aplatform64' \
+      "${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_SH}" 'aplatform64' \
       2>&1 | bl64_log_record 'install_helper-aplatform64'
     Status=$?
   fi
@@ -269,8 +266,8 @@ function aplatform64_SanityCheck {
   bl64_check_command "$BL64_IAM_ALIAS_USERADD" || return 1
   bl64_check_command "$BL64_OS_CMD_AWK" || return 1
 
-  bl64_check_file "$APLATFORM64_SCRIPT_PATH/install_helper.sh" || return 1
-  bl64_check_file "$APLATFORM64_SCRIPT_PATH/install_helper.yml" || return 1
+  bl64_check_file "$APLATFORM64_SCRIPT_PATH/${APLATFORM64_HELPER_SH}" || return 1
+  bl64_check_file "$APLATFORM64_SCRIPT_PATH/${APLATFORM64_HELPER_YML}" || return 1
 
   APLATFORM64_USR_CURRENT="$($BL64_OS_ALIAS_ID_USER)"
   APLATFORM64_USR_CONTROL_HOME="/home/${APLATFORM64_USR_CONTROL_NAME}"
@@ -310,7 +307,7 @@ function aplatform64_SanityCheck {
   APLATFORM64_PATH_CACHE_GALAXY="${APLATFORM64_PATH_CACHE}/galaxy"
   APLATFORM64_PATH_ROLES="${APLATFORM64_PATH_ROOT}/roles"
   APLATFORM64_PATH_CACHE_PIP="${APLATFORM64_PATH_CACHE}/pip"
-  APLATFORM64_PATH_INSTALLER_YML="${APLATFORM64_PATH_BIN}/install_helper.yml"
+  APLATFORM64_PATH_INSTALLER_YML="${APLATFORM64_PATH_BIN}/${APLATFORM64_HELPER_YML}"
 
   APLATFORM64_PATH_ETC="${APLATFORM64_PATH_ROOT}/etc"
   APLATFORM64_PATH_ETC_CFG="${APLATFORM64_PATH_ETC}/cfg"
@@ -351,6 +348,29 @@ function aplatform64_Help() {
   "
 
 }
+
+#
+# Bootstrap
+#
+
+export APLATFORM64_INSTALLER='https://raw.githubusercontent.com/aplatform64/automation/main/roles/auto_aplatform64/files'
+export APLATFORM64_CMD_CURL='/usr/bin/curl'
+export APLATFORM64_CMD_INSTALLER='install-aplatform64'
+export APLATFORM64_HELPER_SH='install-aplatform64-helper.sh'
+export APLATFORM64_HELPER_YML='install-aplatform64-helper.yml'
+
+# Download remaining script components
+"$APLATFORM64_CMD_CURL" \
+  --fail \
+  --fail-early \
+  -O "$APLATFORM64_INSTALLER/scripts/bashlib64.bash" \
+  -O "$APLATFORM64_INSTALLER/installer/${APLATFORM64_HELPER_SH}" \
+  -O "$APLATFORM64_INSTALLER/installer/${APLATFORM64_HELPER_YML}" || { echo "Error: unable to download helpers from: ${APLATFORM64_INSTALLER}" && exit 1; }
+
+# shellcheck disable=SC1091
+source "${BASH_SOURCE[0]%/*}/bashlib64.bash" || { echo 'Error: unable to load bashlib64' && exit 1; }
+
+"$BL64_OS_CMD_CHMOD" '0755' "$APLATFORM64_HELPER_SH"
 
 #
 # Main
