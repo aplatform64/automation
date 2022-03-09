@@ -58,8 +58,12 @@ auto_aplatform64_base:
       }}"
 
 # Associate roles with host_groups
-auto_aplatform64_group_vars:
+auto_aplatform64_group_vars: "{{
+  auto_aplatform64_group_vars_roles +
+  auto_aplatform64_group_vars_playbooks
+  }}"
 
+auto_aplatform64_group_vars_roles:
   - role: "stg_repository"
     host_group: "file_servers"
     template: "stg_repository"
@@ -165,34 +169,38 @@ auto_aplatform64_group_vars:
   - role: "dops_git_server"
     host_group: "git_servers"
     template: "dops_git_server"
+
+auto_aplatform64_group_vars_playbooks:
   - playbook: "manage_cloud_control_nodes"
     host_group: "cloud_control_nodes"
   - playbook: "manage_cloud_population"
     host_group: "cloud_realm"
-  - playbook: "manage_office_nodes"
-    host_group: "office_nodes"
-  - playbook: "manage_dev_nodes"
-    host_group: "dev_nodes"
-  - playbook: "manage_hpc_nodes"
-    host_group: "hpc_nodes"
   - playbook: "manage_cloud_realm"
     host_group: "cloud_realm"
+  - playbook: "manage_db_servers"
+    host_group: "db_servers"
+  - playbook: "manage_dev_nodes"
+    host_group: "dev_nodes"
   - playbook: "manage_doc_sites"
     host_group: "doc_sites"
+  - playbook: "manage_git_servers"
+    host_group: "git_servers"
+  - playbook: "manage_file_servers"
+    host_group: "file_servers"
+  - playbook: "manage_hpc_nodes"
+    host_group: "hpc_nodes"
   - playbook: "manage_jenkins_controllers"
     host_group: "jenkins_controllers"
   - playbook: "manage_jenkins_workers"
     host_group: "jenkins_workers"
-  - playbook: "manage_git_servers"
-    host_group: "git_servers"
   - playbook: "manage_linux_servers"
     host_group: "linux_servers"
   - playbook: "manage_linux_workstations"
     host_group: "linux_workstations"
+  - playbook: "manage_office_nodes"
+    host_group: "office_nodes"
   - playbook: "manage_test_nodes"
     host_group: "test_nodes"
-  - playbook: "manage_file_servers"
-    host_group: "file_servers"
 
 # Declare playbooks
 auto_aplatform64_playbooks:
@@ -212,6 +220,14 @@ auto_aplatform64_playbooks:
     inventory: "ansible_service"
     group: "ansible_managed_nodes"
     info: "Manage Ansible Managed nodes"
+  - playbook: "manage_db_servers"
+    inventory: "db_service"
+    group: "db_servers"
+    info: "Manage db servers"
+  - playbook: "manage_cloud_population"
+    inventory: "cloud_control_nodes"
+    group: "cloud_realm"
+    info: "Manage provisioning of cloud objects"
   - playbook: "manage_cloud_control_nodes"
     inventory: "cloud_control_nodes"
     group: "cloud_control_nodes"
@@ -224,14 +240,14 @@ auto_aplatform64_playbooks:
     inventory: "dev_nodes"
     group: "dev_nodes"
     info: "Provision software development environments"
-  - playbook: "manage_file_servers"
-    inventory: "file_service"
-    group: "file_servers"
-    info: "Manage file servers"
   - playbook: "manage_doc_sites"
     inventory: "doc_sites"
     group: "doc_sites"
     info: "Provision documentation site management tools"
+  - playbook: "manage_file_servers"
+    inventory: "file_service"
+    group: "file_servers"
+    info: "Manage file servers"
   - playbook: "manage_git_servers"
     inventory: "git_service"
     group: "git_servers"
@@ -264,10 +280,6 @@ auto_aplatform64_playbooks:
     inventory: "test_nodes"
     group: "test_nodes"
     info: "Provision software testing tools"
-  - playbook: "manage_cloud_population"
-    inventory: "cloud_control_nodes"
-    group: "cloud_realm"
-    info: "Manage provisioning of cloud objects"
 
 # Declare host groups
 auto_aplatform64_host_groups:
@@ -276,6 +288,7 @@ auto_aplatform64_host_groups:
   - "bootstrap_ansible_managed_nodes"
   - "cloud_control_nodes"
   - "cloud_realm"
+  - "db_servers"
   - "dev_nodes"
   - "doc_sites"
   - "file_servers"
@@ -292,6 +305,7 @@ auto_aplatform64_host_groups:
 auto_aplatform64_inventories:
   - "ansible_service"
   - "cloud_control_nodes"
+  - "db_service"
   - "dev_nodes"
   - "doc_sites"
   - "git_service"
