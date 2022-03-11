@@ -22,9 +22,11 @@ auto_ansible_node_bootstrap:
 ansible_python_interpreter: "/usr/bin/python3"
 
 ansible_ssh_common_args: "-o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no"
-ansible_user: "{{ '{{ auto_ansible_node_bootstrap.user }}' }}"
-ansible_password: "{{ '{{ auto_ansible_node_bootstrap.password }}' }}"
 
-ansible_become_method: "{{ '{{ auto_ansible_node_bootstrap.become_method }}' }}"
-ansible_become_password: "{{ '{{ auto_ansible_node_bootstrap.become_password }}' }}"
+{%- raw %}
+ansible_user: "{{ auto_ansible_node_bootstrap.user }}"
+ansible_password: "{{ auto_ansible_node_bootstrap.password }}"
+ansible_become_method: "{{ auto_ansible_node_bootstrap.become_method }}"
+ansible_become_password: "{{ auto_ansible_node_bootstrap.become_password }}"
+{% endraw %}
 ...
