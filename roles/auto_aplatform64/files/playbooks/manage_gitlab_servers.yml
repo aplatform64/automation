@@ -32,11 +32,20 @@
       ansible.builtin.include_role:
         name: "serdigital64.system.sys_package"
 
+    - name: "Prepare OS Firewall"
+      vars:
+        sec_firewall_os:
+          deploy: true
+      ansible.builtin.include_role:
+        name: "serdigital64.security.sec_firewall_os"
+
   tasks:
     - name: "Provision GitLab Server"
       vars:
         dops_gitlab_server:
           deploy: true
+          setup: true
+          control: true
       ansible.builtin.include_role:
         name: "serdigital64.devops.dops_gitlab_server"
       when:
