@@ -5,7 +5,14 @@
 # * Role settings are available only for the corresponding host group and associated playbook
 #
 
+sys_repository_managers:
+  flatpak: false
+  snap: false
+  git: true
+
+{%- raw %}
 sys_repository_custom_yum: "{{ sys_repository_custom_yum_distro[ansible_distribution + ansible_distribution_major_version] | default([]) }}"
+{% endraw %}
 sys_repository_custom_yum_distro:
   Debian10: []
   Debian11: []
@@ -31,7 +38,10 @@ sys_repository_custom_yum_distro:
       description: "Docker CE Stable"
       url: "https://download.docker.com/linux/centos/$releasever/$basearch/stable"
       gpgkey: "https://download.docker.com/linux/centos/gpg"
+{%- raw %}
 sys_repository_custom_yum: "{{ sys_repository_custom_yum_distro[ansible_distribution + ansible_distribution_major_version] | default([]) }}"
+{% endraw %}
+{%- raw %}
 sys_repository_custom_apt_distro:
   Fedora33: []
   Fedora35: []
@@ -71,8 +81,11 @@ sys_repository_custom_apt_distro:
       component: "stable"
       url: "https://download.docker.com/linux/ubuntu"
       pgpkey: "https://download.docker.com/linux/ubuntu/gpg"
+{% endraw %}
 
+{%- raw %}
 sys_repository_catalog_yum: "{{ sys_repository_catalog_yum_distro[ansible_distribution + ansible_distribution_major_version] | default({}) }}"
+{% endraw %}
 sys_repository_catalog_yum_distro:
   Debian10: {}
   Debian11: {}
@@ -86,7 +99,9 @@ sys_repository_catalog_yum_distro:
     docker: true
   OracleLinux8:
     docker: true
+{%- raw %}
 sys_repository_catalog_apt: "{{ sys_repository_catalog_apt_distro[ansible_distribution + ansible_distribution_major_version] | default({}) }}"
+{% endraw %}
 sys_repository_catalog_apt_distro:
   Fedora33: {}
   Fedora35: {}

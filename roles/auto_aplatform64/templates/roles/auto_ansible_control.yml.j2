@@ -22,5 +22,7 @@ auto_ansible_control_paths:
 auto_ansible_control_key:
   type: "{{ auto_ansible_control_key['type'] }}"
 
-auto_ansible_control_managed: "{{ '{{ groups.ansible_managed_nodes | default([]) }}' }}"
+{%- raw %}
+auto_ansible_control_managed: "{{ groups.ansible_managed_nodes | default([]) }}"
+{% endraw %}
 ...
