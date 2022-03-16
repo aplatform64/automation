@@ -169,7 +169,9 @@
     - name: "Provision Tilix tool"
       vars:
         app_tilix:
+          prepare: true
           deploy: true
+          setup: true
       ansible.builtin.include_role:
         name: "serdigital64.application.app_tilix"
       when:
