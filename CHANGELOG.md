@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0]
+
+### Added
+
+- auto_aplatform64: added keepassxc role template, added setup option to sys_mc/sys_shell role template
+
 ## [1.8.3]
 
 ### Added
 
-- auto_aplatform64: manage_gitlab_servers playbook
+- auto_aplatform64/manage_gitlab_servers: new playbook
 
 ### Fixed
 
@@ -21,16 +27,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- auto_aplatform64: manage_db_servers playbook
-- installer: option for installing from local collection repository
-
-### Changed
-
-- installer: added bootstrap for downloading helpers
+- auto_aplatform64/manage_db_servers: new playbook
+- auto_aplatform64/installer: option for installing from local collection repository
+- auto_aplatform64/installer: added bootstrap for downloading helpers
 
 ## [1.7.1]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.8.3...HEAD
+[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.9.0...HEAD
+[1.9.0]: https://github.com/serdigital64/aplatform64/compare/1.8.1...1.8.3
 [1.8.3]: https://github.com/serdigital64/aplatform64/compare/1.8.1...1.8.3
 [1.8.1]: https://github.com/serdigital64/aplatform64/compare/1.7.1...1.8.1
 [1.7.1]: https://github.com/serdigital64/aplatform64/releases/tag/1.7.1
