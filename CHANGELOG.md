@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0]
+
+### Added
+
+- auto_aplatform64/manage_office_nodes: setup action to KeePassXC
+- auto_aplatform64/manage_linux_workstations: setup action to Tilix
+- auto_aplatform64/manage_linux_servers: template to sys_mc
+
 ## [1.9.0]
 
 ### Added
@@ -33,8 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.7.1]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.9.0...HEAD
-[1.9.0]: https://github.com/serdigital64/aplatform64/compare/1.8.1...1.8.3
+[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.10.0...HEAD
+[1.10.0]: https://github.com/serdigital64/aplatform64/compare/1.9.0...1.10.0
+[1.9.0]: https://github.com/serdigital64/aplatform64/compare/1.8.3...1.9.0
 [1.8.3]: https://github.com/serdigital64/aplatform64/compare/1.8.1...1.8.3
 [1.8.1]: https://github.com/serdigital64/aplatform64/compare/1.7.1...1.8.1
 [1.7.1]: https://github.com/serdigital64/aplatform64/releases/tag/1.7.1
