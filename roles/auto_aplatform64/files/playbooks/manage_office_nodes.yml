@@ -118,6 +118,7 @@
       vars:
         app_keepassxc:
           deploy: true
+          setup: true
       ansible.builtin.include_role:
         name: "serdigital64.application.app_keepassxc"
       when:
