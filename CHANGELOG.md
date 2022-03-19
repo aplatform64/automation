@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.0]
+
+### Added
+
+- auto_ansible_control: ANSIBLE_LOCAL_TEMP to site env
+
 ## [1.10.0]
 
 ### Added
@@ -41,7 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.7.1]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.10.0...HEAD
+[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.11.0...HEAD
+[1.11.0]: https://github.com/serdigital64/aplatform64/compare/1.10.0...1.11.0
 [1.10.0]: https://github.com/serdigital64/aplatform64/compare/1.9.0...1.10.0
 [1.9.0]: https://github.com/serdigital64/aplatform64/compare/1.8.3...1.9.0
 [1.8.3]: https://github.com/serdigital64/aplatform64/compare/1.8.1...1.8.3
