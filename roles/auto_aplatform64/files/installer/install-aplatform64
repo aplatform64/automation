@@ -23,7 +23,7 @@ function aplatform64_InstallOSPackage {
     $BL64_SUDO_ALIAS_SUDO_ENV $BL64_PKG_ALIAS_APT_UPDATE 2>&1 | bl64_log_record 'update-cache'
     $BL64_SUDO_ALIAS_SUDO_ENV $BL64_PKG_ALIAS_APT_INSTALL $PythonPackage 2>&1 | bl64_log_record 'install-packages'
     Status=$?
-  elif [[ "$BL64_OS_DISTRO" == FEDORA* || "$BL64_OS_DISTRO" == OL* || "$BL64_OS_DISTRO" == CENTOS* ]]; then
+  elif [[ "$BL64_OS_DISTRO" == FEDORA* || "$BL64_OS_DISTRO" == OL* || "$BL64_OS_DISTRO" == CENTOS* || "$BL64_OS_DISTRO" == RHEL* || "$BL64_OS_DISTRO" == ALMALINUX* ]]; then
     $BL64_SUDO_ALIAS_SUDO_ENV $BL64_PKG_ALIAS_DNF_CACHE 2>&1 | bl64_log_record 'update-cache'
     $BL64_SUDO_ALIAS_SUDO_ENV $BL64_PKG_ALIAS_DNF_INSTALL $PythonPackage 2>&1 | bl64_log_record 'install-packages'
     Status=$?
@@ -152,7 +152,7 @@ function aplatform64_InstallPython {
 
   case "$BL64_OS_DISTRO" in
   UBUNTU-* | DEBIAN-*) PythonPackage='debianutils' ;;
-  FEDORA-* | CENTOS-* | OL-*) PythonPackage='which' ;;
+  FEDORA-* | CENTOS-* | OL-* | RHEL-* | ALMALINUX-*) PythonPackage='which' ;;
   esac
   aplatform64_InstallOSPackage $PythonPackage
 
@@ -164,8 +164,7 @@ function aplatform64_InstallPython {
   case "$BL64_OS_DISTRO" in
   UBUNTU-*) PythonPackage='python3.9 python3-pip' ;;
   FEDORA-*) PythonPackage='python3 python3-pip' ;;
-  CENTOS-*) PythonPackage='python39 python39-pip' ;;
-  OL-*) PythonPackage='python39 python39-pip' ;;
+  OL-* | CENTOS-* | RHEL-* | ALMALINUX-*) PythonPackage='python39 python39-pip' ;;
   DEBIAN-10*) PythonPackage='python3.7 python3-pip' ;;
   DEBIAN-11*) PythonPackage='python3.9 python3-pip' ;;
   esac
@@ -259,7 +258,7 @@ function aplatform64_SanityCheck {
 
   bl64_log_task 'Check parameters and environment'
 
-  [[ ! ("$BL64_OS_DISTRO" =~ (UBUNTU-.*|FEDORA-.*|CENTOS-.*|OL-.*|DEBIAN-.*)) ]] &&
+  [[ ! ("$BL64_OS_DISTRO" =~ (UBUNTU-.*|FEDORA-.*|CENTOS-.*|RHEL-*|ALMALINUX-*|OL-.*|DEBIAN-.*)) ]] &&
     bl64_log_error "Unsuported linux platform ($BL64_OS_DISTRO)" && return 1
 
   bl64_check_command "$BL64_SUDO_CMD_SUDO" || return 1
@@ -285,8 +284,7 @@ function aplatform64_SanityCheck {
     UBUNTU-*) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.9' ;;
     FEDORA-33) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.9' ;;
     FEDORA-35) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.10' ;;
-    CENTOS-*) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.9' ;;
-    OL-*) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.9' ;;
+    CENTOS-* | OL-* | RHEL-* | ALMALINUX-*) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.9' ;;
     DEBIAN-10*) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.7' ;;
     DEBIAN-11*) APLATFORM64_CMD_PYTHON3='/usr/bin/python3.9' ;;
     esac

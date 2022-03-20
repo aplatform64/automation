@@ -1,5 +1,6 @@
 ---
-- name: "Automation / A:Platform64 / Initialize / Check Platform compatibility"
+- name: "Automation / A:Platform64 / Initialize / Check Platform compatibility ({{
+    ansible_distribution + ansible_distribution_major_version }})"
   ansible.builtin.assert:
     quiet: true
     fail_msg: "Target Platform not supported: {{ ansible_distribution + ansible_distribution_major_version }}"

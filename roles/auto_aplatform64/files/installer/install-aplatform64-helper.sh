@@ -1,7 +1,7 @@
 #!/bin/bash
 #######################################
 #
-# Helper for the Bootstrap A:Platform64 Environment script (install.sh)
+# Helper for the Bootstrap A:Platform64 Environment script (install-aplatform64)
 #
 # Project GIT repository: [https://github.com/serdigital64/aplatform64](https://github.com/serdigital64/aplatform64)
 # Project Ansible Galaxy repository: [https://galaxy.ansible.com/serdigital64](https://galaxy.ansible.com/serdigital64)
