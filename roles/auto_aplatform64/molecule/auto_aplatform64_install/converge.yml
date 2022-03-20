@@ -13,7 +13,7 @@
       ansible.builtin.command:
         chdir: "/"
         argv:
-          - "/install.sh"
+          - "/install-aplatform64"
           - "-p"
           - "-w"
           - "-u"

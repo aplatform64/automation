@@ -17,12 +17,11 @@ test_control_paths:
 test_control_managed:
   - "localhost"
 
-test_src_installer: "{{ lookup('env', 'APLATFORM64_ROOT') +
-  '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer' }}"
-test_src_scripts: "{{ lookup('env', 'APLATFORM64_ROOT') +
-  '/collections/serdigital64/automation/roles/auto_aplatform64/files/scripts' }}"
-test_src_templates: "{{ lookup('env', 'APLATFORM64_ROOT') +
-  '/collections/serdigital64/automation/roles/auto_aplatform64/templates/bin' }}"
+test_src: "{{ lookup('env', 'DEVAP_ROOT') }}"
+test_src_installer: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install-aplatform64' }}"
+test_src_installer_helper_yml: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install-aplatform64-helper.yml' }}"
+test_src_installer_helper_sh: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install-aplatform64-helper.sh' }}"
+test_src_bashlib64: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/scripts/bashlib64.bash' }}"
 
 test_auto_aplatform64_installer_ve_loader: "{{ test_home }}/.local/bin/virtualenv"
 test_auto_aplatform64_installer_vew_loader: "{{ test_home }}/.local/bin/virtualenvwrapper.sh"
