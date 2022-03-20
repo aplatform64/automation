@@ -14,13 +14,8 @@
         dest: "/"
         mode: "0755"
       loop:
-        - "{{ lookup('env', 'APLATFORM64_ROOT') +
-            '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install.sh' }}"
-        - "{{ lookup('env', 'APLATFORM64_ROOT') +
-            '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install_helper.sh' }}"
-        - "{{ lookup('env', 'APLATFORM64_ROOT') +
-            '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install_helper.yml' }}"
-        - "{{ lookup('env', 'APLATFORM64_ROOT') +
-            '/collections/serdigital64/automation/roles/auto_aplatform64/files/scripts/bashlib64.bash' }}"
-
+        - "{{ test_src_installer }}"
+        - "{{ test_src_installer_helper_sh }}"
+        - "{{ test_src_installer_helper_yml }}"
+        - "{{ test_src_bashlib64 }}"
 ...
