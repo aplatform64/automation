@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- all: RHEL-8 and AlmaLinux8 compatibility
 - auto_ansible_control: ANSIBLE_LOCAL_TEMP to site env
 
 ## [1.10.0]
