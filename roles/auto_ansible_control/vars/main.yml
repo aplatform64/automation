@@ -10,25 +10,7 @@ auto_ansible_control_platforms:
   - "Fedora35"
   - "Debian10"
   - "Debian11"
-
-auto_ansible_control_os_family: "
-  {%- if
-      ( ansible_distribution == 'CentOS' ) or
-      ( ansible_distribution == 'RedHat' ) or
-      ( ansible_distribution == 'AlmaLinux' ) or
-      ( ansible_distribution == 'OracleLinux' ) or
-      ( ansible_distribution == 'Fedora' )
-  -%}
-    {{ 'RedHat' }}
-  {%- elif
-      ( ansible_distribution == 'Debian' ) or
-      ( ansible_distribution == 'Ubuntu' )
-  -%}
-    {{ 'Ubuntu' }}
-  {%- else -%}
-    {{ 'NotSupported' }}
-  {%- endif -%}
-  "
+  - "MacOSX12"
 
 auto_ansible_control_base:
   access:
