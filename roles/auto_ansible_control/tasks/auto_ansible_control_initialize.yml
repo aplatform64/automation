@@ -28,10 +28,6 @@
       - auto_ansible_control_paths['var'] is defined
       - auto_ansible_control_paths['var'] | length > 0
 
-- name: "Automation / Ansible / Control / Initialize / Set Platform specific variables"
-  ansible.builtin.include_vars:
-    file: "{{ 'platform-' + auto_ansible_control_os_family + '.yml' }}"
-
 - name: "Automation / Ansible / Control / Initialize / Resolve prerequisites"
   ansible.builtin.include_tasks:
     file: "auto_ansible_control_prerequisite.yml"
