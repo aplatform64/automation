@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #######################################
 #
 # Install the A:Platform64 environment
