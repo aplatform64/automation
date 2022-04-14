@@ -5,15 +5,17 @@
 # * Role settings are available only for the corresponding host group and associated playbook
 #
 
-sys_shell_catalog:
-  zsh: true
-  bash: true
-  ksh: true
-  csh: false
+{%- raw %}
+sys_mc_application:
+  name: "mc"
+  type: "{{ (ansible_distribution == 'MacOSX') | ternary('brew', 'distro') }}"
+  version: "latest"
+  installed: true
+{% endraw %}
 
-sys_shell_actions:
+sys_mc_actions:
   setup:
     overwrite: false
 
-sys_shell_users: []
+sys_mc_users: []
 ...
