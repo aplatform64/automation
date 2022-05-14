@@ -1,0 +1,6 @@
+---
+auto_ansible_node_tools:
+  - "util-linux"    # provides su and runuser
+  - "lsb-release"   # Required to populate ansible.lsb_release
+  - "debianutils"
+...
