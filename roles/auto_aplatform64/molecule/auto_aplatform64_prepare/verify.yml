@@ -33,7 +33,7 @@
         follow: false
         get_mime: false
         get_attributes: false
-        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/ansible_control_nodes' }}"
+        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/aplatform64_servers' }}"
       register: test_path_stats
 
     - name: "Verify the group vars was created"

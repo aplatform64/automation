@@ -28,7 +28,7 @@
         follow: false
         get_mime: false
         get_attributes: false
-        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/ansible_managed_nodes/auto_ansible_node.yml' }}"
+        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/aplatform64_nodes/auto_ansible_node.yml' }}"
       register: test_path_stats
 
     - name: "Verify the default file for auto_ansible_node was created"

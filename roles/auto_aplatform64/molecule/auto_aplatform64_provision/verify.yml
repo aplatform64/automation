@@ -33,7 +33,7 @@
         follow: false
         get_mime: false
         get_attributes: false
-        path: "{{ auto_ansible_control_base['paths']['site_playbooks'] + '/manage_ansible_control_nodes.yml' }}"
+        path: "{{ auto_ansible_control_base['paths']['site_playbooks'] + '/manage_aplatform64_servers.yml' }}"
       register: test_path_stats
 
     - name: "Verify the inventory was created"
