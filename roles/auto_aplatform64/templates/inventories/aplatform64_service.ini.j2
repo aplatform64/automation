@@ -5,51 +5,51 @@
 #
 
 #
-# Ansible Control Nodes
+# A:Platform64 servers
 #
-# : Linux nodes providing Ansible Control services
-#
-# * localhost must be always present
-#
-# Playbooks using this group:
-#   - manage_ansible_control_nodes
-#
-[ansible_control_nodes]
-localhost
-
-#
-# Ansible Managed Nodes
-#
-# : Linux nodes that are already prepared for Ansible management
+# : Linux nodes providing A:Platform64 services
 #
 # * localhost must be always present
 #
 # Playbooks using this group:
-#   - manage_ansible_managed_nodes
+#   - manage_aplatform64_servers
 #
-[ansible_managed_nodes]
+[aplatform64_servers]
 localhost
 
 #
-# Ansible Managed Nodes / Bootstrap
+# A:Platform64 Nodes
+#
+# : Linux nodes that are already prepared for A:Platform64
+#
+# * localhost must be always present
+#
+# Playbooks using this group:
+#   - manage_aplatform64_nodes
+#
+[aplatform64_nodes]
+localhost
+
+#
+# A:Platform64 Nodes / Bootstrap
 #
 # : Parent group to register all boostrap types
 # * Do not modify this group
 # * Required to share common group_vars with all types of bootstrap nodes
 #
 # Playbooks using this group:
-#   - bootstrap_ansible_managed_nodes
+#   - bootstrap_aplatform64_nodes
 #
-[bootstrap_ansible_managed_nodes:children]
-bootstrap_ansible_managed_nodes_distro
+[bootstrap_aplatform64_nodes:children]
+bootstrap_aplatform64_nodes_distro
 
 #
-# Ansible Managed Nodes / Bootstrap distro
+# A:Platform64 Nodes / Bootstrap distro
 #
 # : Group for initial Ansible deployment (bootstrap) on Linux nodes installed from distribution media
 # * Remove the host from this group after the bootstrap is complete
 #
 # Playbooks using this group:
-#   - bootstrap_ansible_managed_nodes
+#   - bootstrap_aplatform64_nodes
 #
-[bootstrap_ansible_managed_nodes_distro]
+[bootstrap_aplatform64_nodes_distro]

@@ -1,6 +1,6 @@
 ---
 - name: "Manage Ansible Control Node"
-  hosts: "ansible_control_nodes"
+  hosts: "aplatform64_servers"
   gather_facts: false
 
   pre_tasks:
@@ -11,30 +11,33 @@
 
   tasks:
 
-    - name: "Setup Ansible Control Node"
+    - name: "Register Managed Nodes in A:Platform64"
       vars:
         auto_ansible_control:
-          prepare: true
-          setup: true
+          provision: true
+        auto_ansible_control_managed: "{{ groups['bootstrap_aplatform64_nodes_distro'] }}"
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_ansible_control"
 
-    - name: "Setup A:Platform64"
-      vars:
-        auto_aplatform64:
-          prepare: true
-          setup: true
-          provision: true
-      ansible.builtin.include_role:
-        name: "serdigital64.automation.auto_aplatform64"
+- name: "Bootstrap Ansible Managed Nodes"
+  hosts: "bootstrap_aplatform64_nodes_distro"
+  gather_facts: false
 
-    - name: "Setup Ansible Managed Node"
+  pre_tasks:
+
+    - name: "Discover Target Platform"
+      ansible.builtin.setup:
+        gather_subset: "min"
+
+  tasks:
+
+    - name: "Prepare Node for Ansible control"
       vars:
         auto_ansible_node:
           prepare: true
           deploy: true
           provision: true
-          bootstrap: false
+          bootstrap: true
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_ansible_node"
 ...

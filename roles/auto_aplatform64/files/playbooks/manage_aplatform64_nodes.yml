@@ -1,6 +1,6 @@
 ---
 - name: "Manage Ansible Control Node"
-  hosts: "ansible_control_nodes"
+  hosts: "aplatform64_servers"
   gather_facts: false
 
   pre_tasks:
@@ -15,12 +15,11 @@
       vars:
         auto_ansible_control:
           provision: true
-        auto_ansible_control_managed: "{{ groups['bootstrap_ansible_managed_nodes_distro'] }}"
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_ansible_control"
 
-- name: "Bootstrap Ansible Managed Nodes"
-  hosts: "bootstrap_ansible_managed_nodes_distro"
+- name: "Manage Ansible Managed Nodes"
+  hosts: "aplatform64_nodes"
   gather_facts: false
 
   pre_tasks:
@@ -31,13 +30,26 @@
 
   tasks:
 
-    - name: "Prepare Node for Ansible control"
+    - name: "Prepare ansible environment"
       vars:
         auto_ansible_node:
           prepare: true
           deploy: true
           provision: true
-          bootstrap: true
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_ansible_node"
+
+    - name: "Prepare archive manager"
+      vars:
+        bkp_archive:
+          deploy: true
+      ansible.builtin.include_role:
+        name: "serdigital64.backup.bkp_archive"
+
+    - name: "Prepare package installer"
+      vars:
+        sys_package:
+          prepare: true
+      ansible.builtin.include_role:
+        name: "serdigital64.system.sys_package"
 ...

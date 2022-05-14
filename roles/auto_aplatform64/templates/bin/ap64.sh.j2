@@ -129,8 +129,8 @@ function ap64_refresh() {
 
   "$APLATFORM64_CMD_ANSIBLE_PLAYBOOK" \
     $verbosity \
-    -i "${APLATFORM64_INVENTORIES}/ansible_service.ini" \
-    "${ANSIBLE_PLAYBOOK_DIR}/manage_ansible_control_nodes.yml"
+    -i "${APLATFORM64_INVENTORIES}/aplatform64_service.ini" \
+    "${ANSIBLE_PLAYBOOK_DIR}/manage_aplatform64_servers.yml"
 
 }
 
@@ -155,10 +155,10 @@ function ap64_create() {
 
   "$APLATFORM64_CMD_ANSIBLE_PLAYBOOK" \
     $verbosity \
-    -i "${APLATFORM64_INVENTORIES}/ansible_service.ini" \
+    -i "${APLATFORM64_INVENTORIES}/aplatform64_service.ini" \
     -e "{\"auto_ansible_control_site\":\"$site\"}" \
     -e '{"auto_ansible_control_managed":[]}' \
-    "${ANSIBLE_PLAYBOOK_DIR}/manage_ansible_control_nodes.yml"
+    "${ANSIBLE_PLAYBOOK_DIR}/manage_aplatform64_servers.yml"
 
 }
 
@@ -313,7 +313,7 @@ while getopts ':corulntvds:p:x:e:h' Option; do
   p) ap64_playbook="$OPTARG" ;;
   e) ap64_collection="$OPTARG" ;;
   h) ap64_help && exit ;;
-  \?) ap64_help && exit 1 ;;
+  *) ap64_help && exit 1 ;;
   esac
 done
 [[ -z "$ap64_command" ]] && ap64_help && exit 1

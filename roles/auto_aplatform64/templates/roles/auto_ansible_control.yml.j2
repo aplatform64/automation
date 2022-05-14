@@ -23,6 +23,6 @@ auto_ansible_control_key:
   type: "{{ auto_ansible_control_key['type'] }}"
 
 {%- raw %}
-auto_ansible_control_managed: "{{ groups.ansible_managed_nodes | default([]) }}"
+auto_ansible_control_managed: "{{ groups.aplatform64_nodes | default([]) }}"
 {% endraw %}
 ...
