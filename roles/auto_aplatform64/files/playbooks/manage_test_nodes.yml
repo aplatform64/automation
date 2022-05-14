@@ -46,6 +46,7 @@
     - name: "Provision Bats Core"
       vars:
         dops_batscore:
+          prepare: true
           deploy: true
       ansible.builtin.include_role:
         name: "serdigital64.devops.dops_batscore"
