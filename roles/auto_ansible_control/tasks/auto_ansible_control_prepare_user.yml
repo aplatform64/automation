@@ -5,10 +5,8 @@
       setup: true
     sys_user_accounts:
       - name: "{{ auto_ansible_control_owners['control']['user'] }}"
-        home: "{{ auto_ansible_control_owners['control']['home'] }}"
+        home: "{{ auto_ansible_control_base['paths']['home'] }}"
         group: "{{ auto_ansible_control_owners['control']['group'] }}"
-        locked: false
-        system: false
   ansible.builtin.include_role:
     name: "serdigital64.system.sys_user"
 ...

@@ -50,6 +50,7 @@ auto_ansible_control_base:
     cache: "{{ auto_ansible_control_paths['var'] + '/cache' }}"
     tmp: "{{ auto_ansible_control_paths['var'] + '/tmp' }}"
     logs: "{{ auto_ansible_control_paths['var'] + '/logs' }}"
+    home: "{{ auto_ansible_control_paths['var'] + '/home' }}"
     persistence: "{{ auto_ansible_control_paths['var'] + '/persistence' }}"
     site_bin: "{{
       auto_ansible_control_paths['root'] +
