@@ -17,8 +17,7 @@
       vars:
         auto_ansible_control:
           provision: true
-        auto_ansible_control_managed:
-          - "192.168.122.1"
+        auto_ansible_control_managed: "{{ test_managed_host }}"
       ansible.builtin.include_role:
         name: "auto_ansible_control"
 ...

@@ -13,4 +13,6 @@ test_control_paths:
   var: "/var/opt/ap64test"
 test_control_managed:
   - "localhost"
+test_managed_host:
+  - "192.168.122.1"
 ...
