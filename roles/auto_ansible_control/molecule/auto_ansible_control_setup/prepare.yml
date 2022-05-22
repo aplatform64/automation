@@ -13,14 +13,6 @@
         gather_subset: "min"
         gather_timeout: "10"
 
-    - name: "Create test user"
-      become: true
-      ansible.builtin.user:
-        create_home: true
-        system: false
-        state: "present"
-        name: "{{ test_name }}"
-
     - name: "Prepare role"
       vars:
         auto_ansible_control:
