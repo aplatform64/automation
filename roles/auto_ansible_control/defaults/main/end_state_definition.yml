@@ -1,11 +1,11 @@
 ---
 auto_ansible_control_site: "site"
 auto_ansible_control_node: "localhost"
-auto_ansible_control_python: "/usr/bin/python3.9"
+auto_ansible_control_python: "/usr/bin/python3"
 
-auto_ansible_control_users:
+auto_ansible_control_owners:
   control:
-    name: "sitectl"
+    user: "sitectl"
     group: "sitectl"
     home: "/home/sitectl"
 

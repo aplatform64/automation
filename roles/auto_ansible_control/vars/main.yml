@@ -16,8 +16,10 @@ auto_ansible_control_platforms:
 
 auto_ansible_control_base:
   access:
-    owner: "{{ auto_ansible_control_users['control']['name'] }}"
-    group: "{{ auto_ansible_control_users['control']['name'] }}"
+    user:
+      owner: "{{ auto_ansible_control_owners['control']['user'] }}"
+    group:
+      owner: "{{ auto_ansible_control_owners['control']['user'] }}"
     mode:
       exe: "0750"
       file: "0640"

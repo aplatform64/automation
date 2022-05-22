@@ -8,8 +8,8 @@
     force: true
     unsafe_writes: false
     dest: "{{ auto_ansible_control_base['files']['ansible_control_env'] }}"
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['exe'] }}"
     src: "{{ auto_ansible_control_base['templates']['ansible_control_env'] }}"
 ...

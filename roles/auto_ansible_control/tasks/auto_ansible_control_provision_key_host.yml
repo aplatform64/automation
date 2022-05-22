@@ -5,8 +5,8 @@
       setup: true
     sec_key_ssh_knownhosts:
       - file: "{{ auto_ansible_control_base['files']['known_hosts'] }}"
-        owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-        group: "{{ auto_ansible_control_base['access']['group'] }}"
+        owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+        group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
         hash: false
         hosts: "{{ auto_ansible_control_managed }}"
   ansible.builtin.include_role:

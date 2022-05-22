@@ -6,8 +6,8 @@
     sec_key_ssh_pairs:
       - file: "{{ auto_ansible_control_base['files']['managed_private_key'] | basename }}"
         path: "{{ auto_ansible_control_base['paths']['site_keys'] }}"
-        owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-        group: "{{ auto_ansible_control_base['access']['group'] }}"
+        owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+        group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
         type: "{{ auto_ansible_control_key['type'] | default(omit) }}"
         size: "{{ auto_ansible_control_key['size'] | default(omit) }}"
   ansible.builtin.include_role:
@@ -21,7 +21,7 @@
     force: false
     content: "**changeme_changeme_changeme**"
     dest: "{{ auto_ansible_control_base['files']['control_secret'] }}"
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['file'] }}"
 ...
