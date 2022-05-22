@@ -7,6 +7,7 @@ Automate the management of Ansible Control Node.
 Supported features in the current version:
 
 - Create directory structure.
+- Create site user and group
 - Setup site configuration files:
   - ansible.cfg: regular operation
   - ansible-debug.cfg: task debugging
@@ -109,7 +110,6 @@ auto_ansible_control_owners:
   control:
     name:
     group:
-    home:
 auto_ansible_control_paths:
   root:
   var:
@@ -119,23 +119,22 @@ auto_ansible_control_key:
 auto_ansible_control_managed:
 ```
 
-| Parameter                                | Required? | Type       | Default                | Purpose / Value                                                                   |
-| ---------------------------------------- | --------- | ---------- | ---------------------- | --------------------------------------------------------------------------------- |
-| auto_ansible_control_site                | no        | string     | `"site"`               | Short name of the site that will be managed by A:Platform64                       |
-| auto_ansible_control_node                | no        | string     | `"localhost"`          | Ansible Control Node\`s hostname. The hostname must resolve to a valid IP address |
-| auto_ansible_control_python              | no        | string     | `"/usr/bin/python3.9"` | Set the path to the Python 3.9 interpreter                                        |
-| auto_ansible_control_owners               | yes       | dictionary |                        | Define what users will use the automation platform                                |
-| auto_ansible_control_owners.control       | yes       | dictionary |                        | Define the user that will own and run tasks on the Ansible Control Node           |
-| auto_ansible_control_owners.control.name  | yes       | string     | `"sitectl"`            | User's login name                                                                 |
-| auto_ansible_control_owners.control.group | yes       | string     | `"sitectl"`            | User's primary group name                                                         |
-| auto_ansible_control_owners.control.home  | yes       | string     | `"/home/sitectl"`      | User's home directory                                                             |
-| auto_ansible_control_paths               | yes       | dictionary |                        | Define where will A:Platform64 be installed to                                    |
-| auto_ansible_control_paths.root          | yes       | string     | `"/opt/sitectl"`       | Base directory for collections, roles, configuration                              |
-| auto_ansible_control_paths.var           | yes       | string     | `"/var/opt/sitectl"`   | Base directory for logs, cache, temporary content                                 |
-| auto_ansible_control_key                 | no        | dictionary |                        | Define OpenSSH key parameters                                                     |
-| auto_ansible_control_key.type            | no        | string     | `"ed25519"`            | Key type. Valid values: as accepted by ssh-keygen                                 |
-| auto_ansible_control_key.size            | no        | string     |                        | Key size                                                                          |
-| auto_ansible_control_managed             | no        | list       |                        | List of Ansible Managed Hosts controlled by this Ansible Control node             |
+| Parameter                                 | Required? | Type       | Default              | Purpose / Value                                                                   |
+| ----------------------------------------- | --------- | ---------- | -------------------- | --------------------------------------------------------------------------------- |
+| auto_ansible_control_site                 | no        | string     | `"site"`             | Short name of the site that will be managed by A:Platform64                       |
+| auto_ansible_control_node                 | no        | string     | `"localhost"`        | Ansible Control Node\`s hostname. The hostname must resolve to a valid IP address |
+| auto_ansible_control_python               | no        | string     | `"/usr/bin/python3"` | Set the path to the Python 3.9 interpreter                                        |
+| auto_ansible_control_owners               | yes       | dictionary |                      | Define what users will use the automation platform                                |
+| auto_ansible_control_owners.control       | yes       | dictionary |                      | Define the user that will own and run tasks on the Ansible Control Node           |
+| auto_ansible_control_owners.control.name  | yes       | string     | `"sitectl"`          | User's login name                                                                 |
+| auto_ansible_control_owners.control.group | yes       | string     | `"sitectl"`          | User's primary group name                                                         |
+| auto_ansible_control_paths                | yes       | dictionary |                      | Define where will A:Platform64 be installed to                                    |
+| auto_ansible_control_paths.root           | yes       | string     | `"/opt/sitectl"`     | Base directory for collections, roles, configuration                              |
+| auto_ansible_control_paths.var            | yes       | string     | `"/var/opt/sitectl"` | Base directory for logs, cache, temporary content                                 |
+| auto_ansible_control_key                  | no        | dictionary |                      | Define OpenSSH key parameters                                                     |
+| auto_ansible_control_key.type             | no        | string     | `"ed25519"`          | Key type. Valid values: as accepted by ssh-keygen                                 |
+| auto_ansible_control_key.size             | no        | string     |                      | Key size                                                                          |
+| auto_ansible_control_managed              | no        | list       |                      | List of Ansible Managed Hosts controlled by this Ansible Control node             |
 
 ## Deployment
 
