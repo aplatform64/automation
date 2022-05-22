@@ -20,8 +20,8 @@
       - auto_ansible_control_owners is defined
       - auto_ansible_control_owners['control']['user'] is defined
       - auto_ansible_control_owners['control']['user'] | length > 0
-      - auto_ansible_control_owners['control']['home'] is defined
-      - auto_ansible_control_owners['control']['home'] | length > 0
+      - auto_ansible_control_owners['control']['group'] is defined
+      - auto_ansible_control_owners['control']['group'] | length > 0
       - auto_ansible_control_paths is defined
       - auto_ansible_control_paths['root'] is defined
       - auto_ansible_control_paths['root'] | length > 0
