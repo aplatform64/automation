@@ -15,24 +15,119 @@
     - name: "Load Role variables"
       vars:
         auto_ansible_control_site: "{{ test_site }}"
-        auto_ansible_control_users: "{{ test_control_users }}"
+        auto_ansible_control_owners: "{{ test_control_users }}"
         auto_ansible_control_paths: "{{ test_control_paths }}"
         auto_ansible_control_managed: "{{ test_control_managed }}"
       ansible.builtin.include_role:
         public: true
         name: "auto_ansible_control"
 
-    - name: "Discover path: auto_ansible_node"
+    - name: "Load Role variables"
+      vars:
+        auto_ansible_control_site: "{{ test_site }}"
+        auto_ansible_control_owners: "{{ test_control_users }}"
+        auto_ansible_control_paths: "{{ test_control_paths }}"
+        auto_ansible_control_managed: "{{ test_control_managed }}"
+      ansible.builtin.include_role:
+        public: true
+        name: "auto_aplatform64"
+
+    - name: "Discover path: site_inventories (inventory)"
       ansible.builtin.stat:
         get_checksum: false
         follow: false
         get_mime: false
         get_attributes: false
-        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/aplatform64_nodes/auto_ansible_node.yml' }}"
+        path: "{{ auto_ansible_control_base['paths']['site_inventories'] + '/aplatform64_service.ini' }}"
       register: test_path_stats
 
-    - name: "Verify the default file for auto_ansible_node was created"
+    - name: "Verify the default file for site_inventories was created"
       ansible.builtin.assert:
         that:
           - test_path_stats['stat']['exists']
+
+    - name: "Discover path: site_group_vars (groupvars/playbooks)"
+      ansible.builtin.stat:
+        get_checksum: false
+        follow: false
+        get_mime: false
+        get_attributes: false
+        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/linux_servers/manage_linux_servers.yml' }}"
+      register: test_path_stats
+
+    - name: "Verify the default file for site_group_vars was created"
+      ansible.builtin.assert:
+        that:
+          - test_path_stats['stat']['exists']
+
+    - name: "Discover path: site_group_vars role (groupvars/roles)"
+      ansible.builtin.stat:
+        get_checksum: false
+        follow: false
+        get_mime: false
+        get_attributes: false
+        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/linux_servers/sys_shell.yml' }}"
+      register: test_path_stats
+
+    - name: "Verify the default file for site_group_vars role was created"
+      ansible.builtin.assert:
+        that:
+          - test_path_stats['stat']['exists']
+
+    - name: "Discover path: host_groups localhost (localhost)"
+      ansible.builtin.stat:
+        get_checksum: false
+        follow: false
+        get_mime: false
+        get_attributes: false
+        path: "{{ auto_aplatform64_base['files']['ansible_localhost_yml'] }}"
+      register: test_path_stats
+
+    - name: "Verify the default file for host_groups localhost was created"
+      ansible.builtin.assert:
+        that:
+          - test_path_stats['stat']['exists']
+
+    - name: "Discover path: ansible_site_yml (engine)"
+      ansible.builtin.stat:
+        get_checksum: false
+        follow: false
+        get_mime: false
+        get_attributes: false
+        path: "{{ auto_aplatform64_base['files']['ansible_site_yml'] }}"
+      register: test_path_stats
+
+    - name: "Verify the default file for ansible_site_yml was created"
+      ansible.builtin.assert:
+        that:
+          - test_path_stats['stat']['exists']
+
+    - name: "Discover path: auto_aplatform64_yml (module)"
+      ansible.builtin.stat:
+        get_checksum: false
+        follow: false
+        get_mime: false
+        get_attributes: false
+        path: "{{ auto_aplatform64_base['files']['auto_aplatform64_yml'] }}"
+      register: test_path_stats
+
+    - name: "Verify the default file for auto_aplatform64_yml was created"
+      ansible.builtin.assert:
+        that:
+          - test_path_stats['stat']['exists']
+
+    - name: "Discover path: ap64_sh (cli)"
+      ansible.builtin.stat:
+        get_checksum: false
+        follow: false
+        get_mime: false
+        get_attributes: false
+        path: "{{ auto_aplatform64_base['files']['ap64_sh'] }}"
+      register: test_path_stats
+
+    - name: "Verify the default file for ap64_sh was created"
+      ansible.builtin.assert:
+        that:
+          - test_path_stats['stat']['exists']
+
 ...
