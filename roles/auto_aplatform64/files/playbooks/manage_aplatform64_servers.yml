@@ -14,27 +14,28 @@
     - name: "Setup Ansible Control Node"
       vars:
         auto_ansible_control:
+          resolve_prereq: true
           prepare: true
           setup: true
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_ansible_control"
 
-    - name: "Setup A:Platform64"
-      vars:
-        auto_aplatform64:
-          prepare: true
-          setup: true
-          provision: true
-      ansible.builtin.include_role:
-        name: "serdigital64.automation.auto_aplatform64"
+  #   - name: "Setup A:Platform64"
+  #     vars:
+  #       auto_aplatform64:
+  #         prepare: true
+  #         setup: true
+  #         provision: true
+  #     ansible.builtin.include_role:
+  #       name: "serdigital64.automation.auto_aplatform64"
 
-    - name: "Setup Ansible Managed Node"
-      vars:
-        auto_ansible_node:
-          prepare: true
-          deploy: true
-          provision: true
-          bootstrap: false
-      ansible.builtin.include_role:
-        name: "serdigital64.automation.auto_ansible_node"
+  #   - name: "Setup Ansible Managed Node"
+  #     vars:
+  #       auto_ansible_node:
+  #         prepare: true
+  #         deploy: true
+  #         provision: true
+  #         bootstrap: false
+  #     ansible.builtin.include_role:
+  #       name: "serdigital64.automation.auto_ansible_node"
 ...

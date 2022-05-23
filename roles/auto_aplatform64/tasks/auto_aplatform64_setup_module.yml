@@ -7,8 +7,8 @@
     follow: false
     force: false
     unsafe_writes: false
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['file'] }}"
     src: "{{ auto_aplatform64_base['templates']['auto_aplatform64_yml'] }}"
     dest: "{{ auto_aplatform64_base['files']['auto_aplatform64_yml'] }}"
@@ -21,8 +21,8 @@
     follow: false
     force: true
     unsafe_writes: false
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['file'] }}"
     src: "{{ auto_aplatform64_base['templates']['aplatform64_env'] }}"
     dest: "{{ auto_aplatform64_base['files']['aplatform64_env'] }}"

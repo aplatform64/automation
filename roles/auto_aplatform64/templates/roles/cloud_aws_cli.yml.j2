@@ -13,7 +13,7 @@ cloud_aws_cli_paths:
 
 cloud_aws_cli_users:
   cloudadm:
-    name: "{{ auto_ansible_control_users['control']['name'] }}"
-    group: "{{ auto_ansible_control_users['control']['group'] }}"
-    home: "{{ auto_ansible_control_users['control']['home'] }}"
+    name: "{{ auto_ansible_control_owners['control']['user'] }}"
+    group: "{{ auto_ansible_control_owners['control']['group'] }}"
+    home: "{{ auto_ansible_control_base['paths']['home'] }}"
 ...

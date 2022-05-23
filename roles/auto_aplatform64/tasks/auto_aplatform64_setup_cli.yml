@@ -1,19 +1,16 @@
 ---
-- name: "Automation / Aplatform64 / Setup / CLI / Distribute Shell64 library pack"
+- name: "Automation / Aplatform64 / Setup / CLI / Distribute BashLib64 bash library"
   become: true
   ansible.builtin.copy:
     backup: false
     follow: false
     force: true
     remote_src: false
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['file'] }}"
-    src: "{{ auto_aplatform64_base['paths']['scripts'] + '/' + auto_aplatform64___setup_lib }}"
+    src: "{{ auto_aplatform64_base['files']['bashlib64'] }}"
     dest: "{{ auto_ansible_control_base['paths']['bin'] }}"
-  loop: "{{ auto_aplatform64_bashlib64 }}"
-  loop_control:
-    loop_var: "auto_aplatform64___setup_lib"
 
 - name: "Automation / Aplatform64 / Setup / CLI / Create A:Platform64 command line interface ({{
     auto_aplatform64_base['files']['ap64_sh'] }})"
@@ -23,8 +20,8 @@
     follow: false
     force: true
     unsafe_writes: false
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['exe'] }}"
     src: "{{ auto_aplatform64_base['templates']['ap64_sh'] }}"
     dest: "{{ auto_aplatform64_base['files']['ap64_sh'] }}"
