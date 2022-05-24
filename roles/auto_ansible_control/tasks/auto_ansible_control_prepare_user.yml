@@ -1,5 +1,5 @@
 ---
-- name: "Automation / Ansible / Prepare / User / Create"
+- name: "Automation / Ansible / Control / Prepare / User / Create"
   vars:
     sys_user:
       setup: true

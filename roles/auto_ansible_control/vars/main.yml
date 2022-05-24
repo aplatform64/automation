@@ -19,7 +19,7 @@ auto_ansible_control_base:
     user:
       owner: "{{ auto_ansible_control_owners['control']['user'] }}"
     group:
-      owner: "{{ auto_ansible_control_owners['control']['user'] }}"
+      owner: "{{ auto_ansible_control_owners['control']['group'] }}"
     mode:
       exe: "0750"
       file: "0640"
