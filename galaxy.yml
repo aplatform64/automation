@@ -1,7 +1,7 @@
 ---
 namespace: "serdigital64"
 name: "automation"
-version: "1.13.0"
+version: "2.0.0"
 readme: "README.md"
 authors:
   - "SerDigital64 <https://github.com/serdigital64>"
@@ -13,7 +13,6 @@ tags:
   - "system"
   - "devops"
 dependencies:
-  ansible.posix: "*"
   serdigital64.backup: "*"
   serdigital64.system: "*"
   serdigital64.security: "*"
