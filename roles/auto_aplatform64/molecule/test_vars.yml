@@ -16,9 +16,5 @@ test_control_managed:
   - "localhost"
 
 test_src: "{{ lookup('env', 'DEVAP_ROOT') }}"
-test_src_installer: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install-aplatform64' }}"
-test_src_installer_helper_yml: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install-aplatform64-helper.yml' }}"
-test_src_installer_helper_sh: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install-aplatform64-helper.sh' }}"
-test_src_bashlib64: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/scripts/bashlib64.bash' }}"
 test_src_playbooks: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/playbooks' }}"
 ...
