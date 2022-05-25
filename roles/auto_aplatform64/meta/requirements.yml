@@ -1,5 +1,6 @@
 ---
 roles: []
 collections:
+  - "serdigital64.application"
   - "serdigital64.system"
 ...

@@ -19,8 +19,6 @@ auto_aplatform64_base:
     playbooks: "files/playbooks"
   templates:
     catalog_csv: "playbooks/catalog.csv.j2"
-    ap64_sh: "bin/ap64.sh.j2"
-    aplatform64_env: "bin/aplatform64.env.j2"
     inventories: "inventories"
     playbooks: "playbooks"
     roles: "roles"
@@ -30,18 +28,9 @@ auto_aplatform64_base:
     ansible_site_yml: "group_vars/ansible_site.yml.j2"
     ansible_localhost_yml: "host_vars/ansible.yml.j2"
   files:
-    bashlib64: "files/lib/bashlib64.bash"
-    ap64_sh: "{{
-      auto_ansible_control_base['paths']['bin'] +
-      '/ap64.sh'
-      }}"
     catalog_csv: "{{
       auto_ansible_control_base['paths']['site_playbooks'] +
       '/catalog.csv'
-      }}"
-    aplatform64_env: "{{
-      auto_ansible_control_base['paths']['bin'] +
-      '/aplatform64.env'
       }}"
     auto_aplatform64_yml: "{{
       auto_ansible_control_base['paths']['site_group_vars_all'] +

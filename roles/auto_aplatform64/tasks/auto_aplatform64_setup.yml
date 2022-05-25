@@ -23,9 +23,9 @@
   ansible.builtin.include_tasks:
     file: "auto_aplatform64_setup_module.yml"
 
-- name: "Automation / A:Platform64 / Setup / CLI"
+- name: "Automation / A:Platform64 / Setup / Playbooks"
   ansible.builtin.include_tasks:
-    file: "auto_aplatform64_setup_cli.yml"
+    file: "auto_aplatform64_setup_playbooks.yml"
 
 - name: "Automation / A:Platform64 / Setup / User"
   ansible.builtin.include_tasks:

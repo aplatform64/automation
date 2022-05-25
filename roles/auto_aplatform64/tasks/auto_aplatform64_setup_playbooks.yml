@@ -1,5 +1,5 @@
 ---
-- name: "Automation / A:Platform64 / Provision / Playbooks / Publish playbooks ({{
+- name: "Automation / A:Platform64 / Setup / Playbooks / Publish playbooks ({{
     auto_ansible_control_base['paths']['site_playbooks'] }})"
   become: true
   ansible.builtin.copy:
@@ -18,7 +18,7 @@
   loop_control:
     loop_var: "auto_aplatform64___provision_playbook"
 
-- name: "Automation / A:Platform64 / Provision / Playbooks / Create catalog ({{
+- name: "Automation / A:Platform64 / Setup / Playbooks / Create catalog ({{
     auto_aplatform64_base['files']['catalog_csv'] }})"
   become: true
   ansible.builtin.template:
