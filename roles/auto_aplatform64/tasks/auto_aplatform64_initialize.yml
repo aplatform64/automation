@@ -29,12 +29,12 @@
       - auto_aplatform64_paths['control']['root'] | length > 0
       - auto_aplatform64_paths['control']['var'] is defined
       - auto_aplatform64_paths['control']['var'] | length > 0
-      - auto_aplatform64_paths['control']['node'] is defined
-      - auto_aplatform64_paths['control']['node'] | length > 0
+      - auto_aplatform64_paths['node']['var'] is defined
+      - auto_aplatform64_paths['node']['var'] | length > 0
 
 - name: "Automation / A:Platform64 / Initialize / Load Dependencies: auto_ansible_control"
   vars:
-    auto_ansible_control_paths: "{{ auto_aplatform64_paths }}"
+    auto_ansible_control_paths: "{{ auto_aplatform64_paths['control'] }}"
     auto_ansible_control_owners: "{{ auto_aplatform64_owners }}"
   ansible.builtin.include_role:
     name: "serdigital64.automation.auto_ansible_control"
