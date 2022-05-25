@@ -13,21 +13,6 @@
         gather_timeout: "10"
 
     - name: "Load Role variables"
-      vars:
-        auto_ansible_control_site: "{{ test_site }}"
-        auto_ansible_control_owners: "{{ test_control_users }}"
-        auto_ansible_control_paths: "{{ test_control_paths }}"
-        auto_ansible_control_managed: "{{ test_control_managed }}"
-      ansible.builtin.include_role:
-        public: true
-        name: "auto_ansible_control"
-
-    - name: "Load Role variables"
-      vars:
-        auto_ansible_control_site: "{{ test_site }}"
-        auto_ansible_control_owners: "{{ test_control_users }}"
-        auto_ansible_control_paths: "{{ test_control_paths }}"
-        auto_ansible_control_managed: "{{ test_control_managed }}"
       ansible.builtin.include_role:
         public: true
         name: "auto_aplatform64"
@@ -116,18 +101,17 @@
         that:
           - test_path_stats['stat']['exists']
 
-    - name: "Discover path: ap64_sh (cli)"
+    - name: "Discover path: play"
       ansible.builtin.stat:
         get_checksum: false
         follow: false
         get_mime: false
         get_attributes: false
-        path: "{{ auto_aplatform64_base['files']['ap64_sh'] }}"
+        path: "{{ auto_ansible_control_base['paths']['site_playbooks'] + '/manage_aplatform64_servers.yml' }}"
       register: test_path_stats
 
-    - name: "Verify the default file for ap64_sh was created"
+    - name: "Verify the inventory was created"
       ansible.builtin.assert:
         that:
           - test_path_stats['stat']['exists']
-
 ...

@@ -1,19 +1,9 @@
 ---
-test_site: "site"
-test_name: "sitectl"
-test_group: "sitectl"
 test_root: "/opt/aplatform64"
-test_bin: "/opt/aplatform64/bin"
 test_var: "/var/opt/aplatform64"
-test_control_users:
-  control:
-    user: "{{ test_name }}"
-    group: "{{ test_group }}"
 test_control_paths:
   root: "{{ test_root }}"
   var: "{{ test_var }}"
-test_control_managed:
-  - "localhost"
 
 test_src: "{{ lookup('env', 'DEVAP_ROOT') }}"
 test_src_playbooks: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/playbooks' }}"
