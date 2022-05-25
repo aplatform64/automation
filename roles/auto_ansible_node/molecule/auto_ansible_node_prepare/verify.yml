@@ -23,7 +23,7 @@
         follow: false
         get_mime: false
         get_attributes: false
-        path: "{{ auto_ansible_node_user['home'] }}"
+        path: "{{ auto_ansible_node_base['paths']['home'] }}"
       register: test_path_stats
 
     - name: "Verify that the remote user was created"

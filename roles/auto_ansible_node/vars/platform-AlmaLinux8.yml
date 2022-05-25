@@ -1,5 +1,0 @@
----
-auto_ansible_node_tools:
-  - "util-linux"    # provides su and runuser
-  - "which"            # Package reference: dev_python/vars/platform-*.yml
-...
