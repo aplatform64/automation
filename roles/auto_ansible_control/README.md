@@ -108,7 +108,7 @@ auto_ansible_control_node:
 auto_ansible_control_python:
 auto_ansible_control_owners:
   control:
-    name:
+    user:
     group:
 auto_ansible_control_paths:
   root:
@@ -126,7 +126,7 @@ auto_ansible_control_managed:
 | auto_ansible_control_python               | no        | string     | `"/usr/bin/python3"` | Set the path to the Python 3.9 interpreter                                        |
 | auto_ansible_control_owners               | yes       | dictionary |                      | Define what users will use the automation platform                                |
 | auto_ansible_control_owners.control       | yes       | dictionary |                      | Define the user that will own and run tasks on the Ansible Control Node           |
-| auto_ansible_control_owners.control.name  | yes       | string     | `"sitectl"`          | User's login name                                                                 |
+| auto_ansible_control_owners.control.user  | yes       | string     | `"sitectl"`          | User's login name                                                                 |
 | auto_ansible_control_owners.control.group | yes       | string     | `"sitectl"`          | User's primary group name                                                         |
 | auto_ansible_control_paths                | yes       | dictionary |                      | Define where will A:Platform64 be installed to                                    |
 | auto_ansible_control_paths.root           | yes       | string     | `"/opt/sitectl"`     | Base directory for collections, roles, configuration                              |
