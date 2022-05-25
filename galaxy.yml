@@ -13,6 +13,7 @@ tags:
   - "system"
   - "devops"
 dependencies:
+  serdigital64.application: "*"
   serdigital64.backup: "*"
   serdigital64.system: "*"
   serdigital64.security: "*"
