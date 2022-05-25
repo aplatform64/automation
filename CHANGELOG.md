@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0]
+
+### Added
+
+- all: RockLinux8, Ubuntu22.4 support
+- auto_aplatform64
+  - manage_macos_workstations: new playbook
+  - added ansible managed and control node setup to prepare stage
+
+### Changed
+
+- auto_aplatform64/playbooks:
+  - WARNING: breaking changes
+    - moved playbook setup from provision to setup phase
+    - renamed playbooks and associated resources:
+      - manage_ansible_control_nodes -> manage_aplatform64_servers
+      - manage_ansible_managed_nodes -> manage_aplatform64_nodes
+- auto_ansible_control:
+  - added site user creation
+  - WARNING: breaking changes
+    - set user home to: `auto_ansible_control_paths.var + '/home'`
+    - renamed `auto_ansible_control_users` to `auto_ansible_control_owners`
+    - renamed `auto_ansible_control_users.control.name` to `auto_ansible_control_owners.control.user`
+- auto_ansible_node:
+  - WARNING: breaking changes
+    - set user home to: `auto_ansible_node_paths.var + '/home'`
+    - renamed `auto_ansible_node_user` to `auto_ansible_node_owners`
+
+### Removed
+
+- auto_aplatform64
+  - WARNING: breaking changes
+    - installer: removed from collection, promoted to stand-alone file to the main A:Platform64 GIT repository
+    - ap64: removed from collection, promoted to stand-alone file to the main A:Platform64 GIT repository
+- auto_ansible_control:
+  - WARNING: breaking changes
+    - removed `auto_ansible_control_users.control.home`
+- auto_ansible_node:
+  - WARNING: breaking changes
+    - removed `auto_ansible_node_bootstrap`
+    - removed `auto_ansible_node_user.home`, `auto_ansible_node_user.become_method`, `auto_ansible_node_user.description`
+    - removed `deploy` and `provision` actions
+
 ## [1.12.0]
 
 ### Added
@@ -38,7 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- auto_aplatform64: added keepassxc role template, added setup option to sys_mc/sys_shell role template
+- auto_aplatform64: keepassxc role template, added setup option to sys_mc/sys_shell role template
 
 ## [1.8.3]
 
@@ -48,7 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- auto_aplatform64: added missing jinja raw tag to role templates
+- auto_aplatform64: missing jinja raw tag to role templates
 
 ## [1.8.1]
 
@@ -56,11 +99,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - auto_aplatform64/manage_db_servers: new playbook
 - auto_aplatform64/installer: option for installing from local collection repository
-- auto_aplatform64/installer: added bootstrap for downloading helpers
+- auto_aplatform64/installer: bootstrap for downloading helpers
 
 ## [1.7.1]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.12.0...HEAD
+[unreleased]: https://github.com/serdigital64/aplatform64/compare/1.13.0...HEAD
+[1.13.0]: https://github.com/serdigital64/aplatform64/compare/1.12.0...1.13.0
 [1.12.0]: https://github.com/serdigital64/aplatform64/compare/1.11.0...1.12.0
 [1.11.0]: https://github.com/serdigital64/aplatform64/compare/1.10.0...1.11.0
 [1.10.0]: https://github.com/serdigital64/aplatform64/compare/1.9.0...1.10.0
