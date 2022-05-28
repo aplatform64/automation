@@ -12,4 +12,18 @@
     group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['exe'] }}"
     src: "{{ auto_ansible_control_base['templates']['ansible_control_env'] }}"
+
+- name: "Automation / Ansible / Control / Setup / Loader / Register root path
+    ({{ auto_ansible_control_base['files']['cli_root'] }})"
+  become: true
+  ansible.builtin.lineinfile:
+    backup: false
+    create: true
+    unsafe_writes: false
+    state: "present"
+    path: "{{ auto_ansible_control_base['files']['cli_root'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
+    mode: "{{ auto_ansible_control_base['access']['mode']['file'] }}"
+    line: "{{ auto_ansible_control_base['paths']['root'] }}"
 ...
