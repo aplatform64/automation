@@ -1,16 +1,9 @@
 ---
-auto_aplatform64_paths:
-  control:
-    root: "/opt/aplatform64"
-    var: "/var/opt/aplatform64"
-  node:
-    var: "/var/opt/amnode"
-
-auto_aplatform64_owners:
-  control:
-    user: "ap64"
-    group: "ap64"
-  node:
-    user: "amnode"
-    group: "amnode"
+auto_aplatform64_paths_control_root: "/opt/aplatform64"
+auto_aplatform64_paths_control_var: "/var/opt/aplatform64"
+auto_aplatform64_paths_node_var: "/var/opt/amnode"
+auto_aplatform64_owners_control_user: "ap64"
+auto_aplatform64_owners_control_group: "ap64"
+auto_aplatform64_owners_node_user: "amnode"
+auto_aplatform64_owners_node_group: "amnode"
 ...
