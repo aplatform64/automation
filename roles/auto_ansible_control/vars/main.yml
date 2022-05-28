@@ -164,7 +164,7 @@ auto_ansible_control_base:
       '/host_vars'
       }}"
   files:
-    cli_root: "{{ auto_ansible_control_base['paths']['home'] + '/.ap64-root' }}"
+    cli_root: "{{ auto_ansible_control_paths['var'] + '/home/.ap64-root' }}"
     cli: "{{ auto_ansible_control_paths['root'] + '/ap64' }}"
     control_secret: "{{
       auto_ansible_control_paths['root'] +
