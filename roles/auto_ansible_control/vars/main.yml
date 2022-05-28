@@ -109,34 +109,9 @@ auto_ansible_control_base:
       '/roles/'
       + auto_ansible_control_site
       }}"
-    site_logs: "{{
-      auto_ansible_control_paths['var'] +
-      '/logs/' +
-      auto_ansible_control_site
-      }}"
-    site_tmp: "{{
-      auto_ansible_control_paths['var'] +
-      '/tmp/' +
-      auto_ansible_control_site
-      }}"
-    site_cache: "{{
-      auto_ansible_control_paths['var'] +
-      '/cache/' +
-      auto_ansible_control_site
-      }}"
-    site_persistence: "{{
-      auto_ansible_control_paths['var'] +
-      '/persistence/' +
-      auto_ansible_control_site
-      }}"
     site_etc_groups: "{{
       auto_ansible_control_paths['root'] +
       '/etc/groups/' +
-      auto_ansible_control_site
-      }}"
-    site_var_groups: "{{
-      auto_ansible_control_paths['var'] +
-      '/groups/' +
       auto_ansible_control_site
       }}"
     site_files_groups: "{{
@@ -162,6 +137,31 @@ auto_ansible_control_base:
       '/inventories/' +
       auto_ansible_control_site +
       '/host_vars'
+      }}"
+    site_logs: "{{
+      auto_ansible_control_paths['var'] +
+      '/logs/' +
+      auto_ansible_control_site
+      }}"
+    site_tmp: "{{
+      auto_ansible_control_paths['var'] +
+      '/tmp/' +
+      auto_ansible_control_site
+      }}"
+    site_cache: "{{
+      auto_ansible_control_paths['var'] +
+      '/cache/' +
+      auto_ansible_control_site
+      }}"
+    site_persistence: "{{
+      auto_ansible_control_paths['var'] +
+      '/persistence/' +
+      auto_ansible_control_site
+      }}"
+    site_var_groups: "{{
+      auto_ansible_control_paths['var'] +
+      '/groups/' +
+      auto_ansible_control_site
       }}"
   files:
     cli_root: "{{ auto_ansible_control_paths['var'] + '/home/.ap64-root' }}"
