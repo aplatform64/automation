@@ -1,5 +1,5 @@
 ---
-- name: "Verify"
+- name: "Converge"
   hosts: "{{ lookup('env', 'DEVAP_TEST_PLATFORM') | default('all') }}"
   gather_facts: false
   tasks:
@@ -12,10 +12,8 @@
         groups: "aplatform64_servers"
       changed_when: false
 
-- ansible.builtin.import_playbook: "{{ test_src_playbooks + '/manage_aplatform64_servers.yml' }}"
+- ansible.builtin.import_playbook: "{{ test_src_playbooks + '/manage_aplatform64_nodes.yml' }}"
   vars:
     test_src: "{{ lookup('env', 'DEVAP_ROOT') }}"
     test_src_playbooks: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/playbooks' }}"
-    aplatform64_servers: "{{ lookup('env', 'DEVAP_TEST_PLATFORM') | default('all') }}"
-    auto_ansible_control_paths: "{{ test_control_paths }}"
 ...
