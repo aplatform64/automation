@@ -30,10 +30,11 @@ Additional directories are create to further organize content. The full list is 
 
 | Path                | Content                                                          | Ansible Variable                                                 |
 | ------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `root/bin/`         | Shell scripts and environment variables                          |                                                                  |
 | `root/etc/cfg`      | Ansible configuration files                                      | ANSIBLE_CONFIG                                                   |
 | `root/etc/keys`     | OpenSSH key pairs                                                | ANSIBLE_PRIVATE_KEY_FILE                                         |
 | `root/etc/tokens`   | API tokens                                                       | ANSIBLE_GALAXY_TOKEN_PATH                                        |
-| `root/bin/`         | Shell scripts                                                    |                                                                  |
+| `root/etc/groups`   | Host groups resources                                            |                                                                  |
 | `root/inventories/` | Ansible inventory files, host_vars and group_vars                | ANSIBLE_INVENTORY                                                |
 | `root/playbooks/`   | Ansible Playbooks                                                | ANSIBLE_PLAYBOOK_DIR                                             |
 | `root/collections/` | Collections installed from Ansible-Galaxy                        | ANSIBLE_COLLECTIONS_PATHS                                        |
@@ -43,6 +44,7 @@ Additional directories are create to further organize content. The full list is 
 | `root/vars/`        | Custom site-specific Ansible variables                           |                                                                  |
 | `root/tests/`       | Ansible playbooks for testing Custom Ansible Roles and Playbooks |                                                                  |
 | `root/docs/`        | Repository for storing site-specific documentation               |                                                                  |
+| `var/home`          | Site control user home                                           |                                                                  |
 | `var/cache`         | General purpose cache                                            | ANSIBLE_CACHE_PLUGIN_CONNECTION, ANSIBLE_GALAXY_CACHE_DIR        |
 | `var/logs`          | General purpose log store                                        | ANSIBLE_LOG_PATH                                                 |
 | `var/persistence`   | General purpose persistence store                                | ANSIBLE_PERSISTENT_CONTROL_PATH_DIR,ANSIBLE_SSH_CONTROL_PATH_DIR |
