@@ -4,4 +4,5 @@ auto_ansible_control:
   prepare: false
   setup: false
   provision: false
+auto_ansible_control_site: "site"
 ...
