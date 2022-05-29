@@ -13,6 +13,4 @@ auto_ansible_control_owners:
 
 auto_ansible_control_key:
   type: "ed25519"
-
-auto_ansible_control_managed: []
 ...

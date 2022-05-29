@@ -5,4 +5,5 @@ auto_ansible_control:
   setup: false
   provision: false
 auto_ansible_control_site: "site"
+auto_ansible_control_managed: []
 ...
