@@ -1,6 +1,6 @@
 ---
-- name: "Manage A:Platform control node"
-  hosts: "{{ auto_aplatform64_bootstrap | default( 'aplatform64_servers' ) }}"
+- name: "Manage A:Platform control nodes"
+  hosts: "{{ manage_aplatform64_servers_bootstrap | default( 'aplatform64_servers' ) }}"
   gather_facts: false
 
   pre_tasks:
