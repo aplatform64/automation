@@ -14,7 +14,7 @@
 
     - name: "Load role variables"
       vars:
-        auto_ansible_control_users: "{{ test_control_users }}"
+        auto_ansible_control_owners: "{{ test_control_users }}"
         auto_ansible_control_paths: "{{ test_control_paths }}"
       ansible.builtin.include_role:
         public: true
@@ -31,8 +31,8 @@
         that:
           - auto_ansible_control_site is defined
           - auto_ansible_control_python is defined
-          - auto_ansible_control_users['control']['name'] is defined
-          - auto_ansible_control_users['control']['home'] is defined
+          - auto_ansible_control_owners['control']['user'] is defined
+          - auto_ansible_control_owners['control']['home'] is defined
           - auto_ansible_control_paths['root'] is defined
           - auto_ansible_control_paths['var'] is defined
 ...

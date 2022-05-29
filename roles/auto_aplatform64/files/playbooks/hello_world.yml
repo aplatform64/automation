@@ -1,6 +1,6 @@
 ---
 - name: "Ansible Controller Node / Hello World!"
-  hosts: "ansible_control_nodes"
+  hosts: "aplatform64_servers"
   gather_facts: false
 
   tasks:
@@ -15,7 +15,7 @@
           }}"
 
 - name: "Ansible Managed Node / Hello World!"
-  hosts: "ansible_managed_nodes"
+  hosts: "aplatform64_nodes"
   gather_facts: false
 
   tasks:

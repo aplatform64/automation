@@ -6,8 +6,8 @@
     follow: false
     force: true
     unsafe_writes: false
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['file'] }}"
     src: "{{
       auto_aplatform64_base['templates']['playbooks'] + '/' +

@@ -1,7 +1,0 @@
----
-- name: "Automation / Ansible / Node / Deploy / Tools"
-  ansible.builtin.include_tasks:
-    file: "auto_ansible_node_deploy_tools.yml"
-  when:
-    - auto_ansible_node_tools | length > 0
-...

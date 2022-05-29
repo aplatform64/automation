@@ -13,11 +13,6 @@
         gather_timeout: "10"
 
     - name: "Load role variables"
-      vars:
-        auto_ansible_control_site: "{{ test_site }}"
-        auto_ansible_control_users: "{{ test_control_users }}"
-        auto_ansible_control_paths: "{{ test_control_paths }}"
-        auto_ansible_control_managed: "{{ test_control_managed }}"
       ansible.builtin.include_role:
         public: true
         name: "auto_aplatform64"
@@ -33,7 +28,7 @@
         follow: false
         get_mime: false
         get_attributes: false
-        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/ansible_control_nodes' }}"
+        path: "{{ auto_ansible_control_base['paths']['site_group_vars'] + '/aplatform64_servers' }}"
       register: test_path_stats
 
     - name: "Verify the group vars was created"

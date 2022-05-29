@@ -7,4 +7,6 @@ collections:
     type: "file"
   - name: "../../../../../build/dev/serdigital64-security.tar.gz"
     type: "file"
+  - name: "../../../../../build/dev/serdigital64-automation.tar.gz"
+    type: "file"
 ...

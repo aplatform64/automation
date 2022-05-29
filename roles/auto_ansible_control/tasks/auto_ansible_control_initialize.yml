@@ -11,17 +11,17 @@
   ansible.builtin.assert:
     fail_msg: "required parameters are missing ({{
       auto_ansible_control_site | default('auto_ansible_control_site') }} ' / ' {{
-      auto_ansible_control_users | default('auto_ansible_control_users') }} ' / ' {{
+      auto_ansible_control_owners | default('auto_ansible_control_owners') }} ' / ' {{
       auto_ansible_control_paths | default('auto_ansible_control_paths')
       }})"
     quiet: true
     that:
       - auto_ansible_control_site is defined
-      - auto_ansible_control_users is defined
-      - auto_ansible_control_users['control']['name'] is defined
-      - auto_ansible_control_users['control']['name'] | length > 0
-      - auto_ansible_control_users['control']['home'] is defined
-      - auto_ansible_control_users['control']['home'] | length > 0
+      - auto_ansible_control_owners is defined
+      - auto_ansible_control_owners['control']['user'] is defined
+      - auto_ansible_control_owners['control']['user'] | length > 0
+      - auto_ansible_control_owners['control']['group'] is defined
+      - auto_ansible_control_owners['control']['group'] | length > 0
       - auto_ansible_control_paths is defined
       - auto_ansible_control_paths['root'] is defined
       - auto_ansible_control_paths['root'] | length > 0
