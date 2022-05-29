@@ -29,27 +29,3 @@ localhost
 #
 [aplatform64_nodes]
 localhost
-
-#
-# A:Platform64 Nodes / Bootstrap
-#
-# : Parent group to register all boostrap types
-# * Do not modify this group
-# * Required to share common group_vars with all types of bootstrap nodes
-#
-# Playbooks using this group:
-#   - bootstrap_aplatform64_nodes
-#
-[bootstrap_aplatform64_nodes:children]
-bootstrap_aplatform64_nodes_distro
-
-#
-# A:Platform64 Nodes / Bootstrap distro
-#
-# : Group for initial Ansible deployment (bootstrap) on Linux nodes installed from distribution media
-# * Remove the host from this group after the bootstrap is complete
-#
-# Playbooks using this group:
-#   - bootstrap_aplatform64_nodes
-#
-[bootstrap_aplatform64_nodes_distro]
