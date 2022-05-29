@@ -14,13 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - all: RockLinux8, Ubuntu22.4 support
 - auto_aplatform64
   - manage_macos_workstations: new playbook
-  - added ansible managed and control node setup to prepare stage
 
 ### Changed
 
-- auto_aplatform64/playbooks:
+- auto_aplatform64:
+  - integrate management of site using auto_ansible_control
+  - integrate management of nodes using auto_ansible_node
   - WARNING: breaking changes
-    - moved playbook setup from provision to setup phase
     - renamed playbooks and associated resources:
       - manage_ansible_control_nodes -> manage_aplatform64_servers
       - manage_ansible_managed_nodes -> manage_aplatform64_nodes
@@ -41,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - WARNING: breaking changes
     - installer: removed from collection, promoted to stand-alone file to the main A:Platform64 GIT repository
     - ap64: removed from collection, promoted to stand-alone file to the main A:Platform64 GIT repository
+    - bootstrap playbooks
 - auto_ansible_control:
   - WARNING: breaking changes
     - removed `auto_ansible_control_users.control.home`
