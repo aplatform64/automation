@@ -6,4 +6,7 @@ auto_aplatform64_owners_control_user: "ap64"
 auto_aplatform64_owners_control_group: "ap64"
 auto_aplatform64_owners_node_user: "amnode"
 auto_aplatform64_owners_node_group: "amnode"
+auto_aplatform64_site: "site"
+auto_aplatform64_control: "localhost"
+auto_aplatform64_python: "/usr/bin/python3"
 ...
