@@ -1,6 +1,7 @@
 ---
 auto_ansible_control_node: "localhost"
 auto_ansible_control_python: "/usr/bin/python3"
+auto_ansible_control_site: "site"
 
 auto_ansible_control_paths:
   root: "/opt/sitectl"
