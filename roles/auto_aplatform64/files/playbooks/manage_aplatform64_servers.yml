@@ -1,17 +1,15 @@
 ---
-- name: "Manage Ansible Control Node"
-  hosts: "aplatform64_servers"
+- name: "Manage A:Platform control node"
+  hosts: "{{ auto_aplatform64_bootstrap | default( 'aplatform64_servers' ) }}"
   gather_facts: false
 
   pre_tasks:
-
     - name: "Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
 
   tasks:
-
-    - name: "Setup A:Platform64"
+    - name: "Provision A:Platform64"
       vars:
         auto_aplatform64:
           prepare: true
