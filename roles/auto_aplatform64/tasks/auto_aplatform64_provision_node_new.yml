@@ -1,0 +1,14 @@
+---
+- name: "Automation / A:Platform64 / Provision / Node / New / Register in inventory"
+  community.general.ini_file:
+    backup: false
+    create: false
+    exclusive: false
+    no_extra_spaces: false
+    unsafe_writes: false
+    allow_no_value: true
+    state: "present"
+    section: "aplatform64_nodes"
+    option: "{{ auto_aplatform64_bootstrap_node_fqdn }}"
+    path: "{{ auto_ansible_control_base['paths']['site_inventories'] + '/aplatform64_service.ini' }}"
+...

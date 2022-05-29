@@ -1,5 +1,5 @@
 ---
-- name: "Manage Ansible Control Node"
+- name: "Manage A:Platform64 managed nodes"
   hosts: "aplatform64_servers"
   gather_facts: false
 
@@ -10,46 +10,10 @@
         gather_subset: "min"
 
   tasks:
-
-    - name: "Register Managed Nodes in A:Platform64"
+    - name: "Provision node"
       vars:
-        auto_ansible_control:
+        auto_aplatform64:
           provision: true
       ansible.builtin.include_role:
-        name: "serdigital64.automation.auto_ansible_control"
-
-- name: "Manage Ansible Managed Nodes"
-  hosts: "aplatform64_nodes"
-  gather_facts: false
-
-  pre_tasks:
-
-    - name: "Discover Target Platform"
-      ansible.builtin.setup:
-        gather_subset: "min"
-
-  tasks:
-
-    - name: "Prepare ansible environment"
-      vars:
-        auto_ansible_node:
-          prepare: true
-          deploy: true
-          provision: true
-      ansible.builtin.include_role:
-        name: "serdigital64.automation.auto_ansible_node"
-
-    - name: "Prepare archive manager"
-      vars:
-        bkp_archive:
-          deploy: true
-      ansible.builtin.include_role:
-        name: "serdigital64.backup.bkp_archive"
-
-    - name: "Prepare package installer"
-      vars:
-        sys_package:
-          prepare: true
-      ansible.builtin.include_role:
-        name: "serdigital64.system.sys_package"
+        name: "serdigital64.automation.auto_aplatform64"
 ...

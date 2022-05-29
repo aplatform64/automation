@@ -11,6 +11,6 @@
   vars:
     test_src: "{{ lookup('env', 'DEVAP_ROOT') }}"
     test_src_playbooks: "{{ test_src + '/collections/serdigital64/automation/roles/auto_aplatform64/files/playbooks' }}"
-    auto_aplatform64_bootstrap: "{{ lookup('env', 'DEVAP_TEST_PLATFORM') | default('all') }}"
+    manage_aplatform64_servers_bootstrap: "{{ lookup('env', 'DEVAP_TEST_PLATFORM') | default('all') }}"
     auto_ansible_control_paths: "{{ test_control_paths }}"
 ...

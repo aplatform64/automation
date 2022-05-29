@@ -7,6 +7,7 @@
       setup: true
     auto_ansible_control_paths: "{{ auto_aplatform64_paths['control'] }}"
     auto_ansible_control_owners: "{{ auto_aplatform64_owners }}"
+    auto_ansible_control_site: "{{ auto_aplatform64_site }}"
   ansible.builtin.include_role:
     name: "serdigital64.automation.auto_ansible_control"
 
