@@ -6,8 +6,8 @@
     unsafe_writes: false
     force: false
     state: "directory"
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['dir'] }}"
     path: "{{
       auto_ansible_control_base['paths']['site_group_vars'] + '/' +
@@ -24,8 +24,8 @@
     unsafe_writes: false
     force: false
     state: "directory"
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['dir'] }}"
     path: "{{
       auto_ansible_control_base['paths']['site_var_groups'] + '/' +
@@ -42,8 +42,8 @@
     unsafe_writes: false
     force: false
     state: "directory"
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['dir'] }}"
     path: "{{
       auto_ansible_control_base['paths']['site_etc_groups'] + '/' +
@@ -60,8 +60,8 @@
     unsafe_writes: false
     force: false
     state: "directory"
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['dir'] }}"
     path: "{{
       auto_ansible_control_base['paths']['site_files_groups'] + '/' +
@@ -78,8 +78,8 @@
     unsafe_writes: false
     force: true
     state: "directory"
-    owner: "{{ auto_ansible_control_base['access']['owner'] }}"
-    group: "{{ auto_ansible_control_base['access']['group'] }}"
+    owner: "{{ auto_ansible_control_base['access']['user']['owner'] }}"
+    group: "{{ auto_ansible_control_base['access']['group']['owner'] }}"
     mode: "{{ auto_ansible_control_base['access']['mode']['dir'] }}"
     dest: "{{
       auto_ansible_control_base['paths']['site_host_vars'] +

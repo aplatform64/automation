@@ -17,6 +17,5 @@ ansible_ssh_common_args: "{{
     auto_ansible_control_base['files']['known_hosts']
 }}"
 
-ansible_user: "{{ auto_ansible_node_user['name'] }}"
-ansible_become_method: "{{ auto_ansible_node_user['become_method'] }}"
+ansible_user: "{{ auto_aplatform64_owners['node']['user'] }}"
 ...

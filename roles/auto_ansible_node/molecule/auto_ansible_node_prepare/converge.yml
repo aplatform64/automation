@@ -17,11 +17,6 @@
       vars:
         auto_ansible_node:
           prepare: true
-        auto_ansible_node_user:
-          name: "amnode"
-          group: "amnode"
-          home: "/home/amnode"
-          description: "Ansible managed node"
       ansible.builtin.include_role:
         name: "auto_ansible_node"
 ...

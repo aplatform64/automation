@@ -22,9 +22,9 @@ infra_terraform_paths:
 
 infra_terraform_users:
   terraform:
-    name: "{{ auto_ansible_control_users['control']['name'] }}"
-    group: "{{ auto_ansible_control_users['control']['group'] }}"
-    home: "{{ auto_ansible_control_users['control']['home'] }}"
+    name: "{{ auto_ansible_control_owners['control']['user'] }}"
+    group: "{{ auto_ansible_control_owners['control']['group'] }}"
+    home: "{{ auto_ansible_control_base['paths']['home'] }}"
 
 infra_terraform_projects:
   - name: "default"

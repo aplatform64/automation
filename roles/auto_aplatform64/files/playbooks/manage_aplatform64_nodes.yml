@@ -1,0 +1,19 @@
+---
+- name: "Manage A:Platform64 managed nodes"
+  hosts: "aplatform64_servers"
+  gather_facts: false
+
+  pre_tasks:
+
+    - name: "Discover Target Platform"
+      ansible.builtin.setup:
+        gather_subset: "min"
+
+  tasks:
+    - name: "Provision node"
+      vars:
+        auto_aplatform64:
+          provision: true
+      ansible.builtin.include_role:
+        name: "serdigital64.automation.auto_aplatform64"
+...

@@ -1,12 +1,13 @@
 ---
-- name: "Automation / Ansible / Node / Prepare / Sudoers/ Grant root privilege to managed node user ({{ auto_ansible_node_user['name'] }})"
-  become: true
-  ansible.builtin.lineinfile:
-    backup: true
-    create: false
-    line: "{{ auto_ansible_node_user['name'] + ' ' + auto_ansible_node_privilege }}"
-    regexp: "^{{ auto_ansible_node_user['name'] }} .*"
-    state: "present"
-    validate: "{{ auto_ansible_node_base['run']['visudo'] }} -cf %s"
-    path: "{{ auto_ansible_node_base['files']['sudoers'] }}"
+- name: "Automation / Ansible / Node / Prepare / Sudoers / Grant root privilege to managed node user"
+  vars:
+    sys_sudo:
+      setup: true
+    sys_sudo_rules:
+      user:
+        - name: "{{ auto_ansible_node_base['access']['user']['owner'] }}"
+          rule: "ALL=(ALL) NOPASSWD: ALL"
+          present: true
+  ansible.builtin.include_role:
+    name: "serdigital64.system.sys_sudo"
 ...

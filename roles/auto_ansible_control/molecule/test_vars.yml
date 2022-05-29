@@ -5,7 +5,7 @@ test_group: "sitectl"
 test_home: "/home/sitectl"
 test_control_users:
   control:
-    name: "{{ test_name }}"
+    user: "{{ test_name }}"
     group: "{{ test_group }}"
     home: "{{ test_home }}"
 test_control_paths:
@@ -13,4 +13,6 @@ test_control_paths:
   var: "/var/opt/ap64test"
 test_control_managed:
   - "localhost"
+test_managed_host:
+  - "192.168.122.1"
 ...

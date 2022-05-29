@@ -9,6 +9,8 @@ sys_repository_managers:
   flatpak: false
   snap: false
   git: true
+  pip: true
+  brew: true
 
 {%- raw %}
 sys_repository_custom_yum: "{{ sys_repository_custom_yum_distro[ansible_distribution + ansible_distribution_major_version] | default([]) }}"
@@ -82,6 +84,7 @@ sys_repository_custom_apt_distro:
       url: "https://download.docker.com/linux/ubuntu"
       pgpkey: "https://download.docker.com/linux/ubuntu/gpg"
 {% endraw %}
+sys_repository_custom_brew: []
 
 {%- raw %}
 sys_repository_catalog_yum: "{{ sys_repository_catalog_yum_distro[ansible_distribution + ansible_distribution_major_version] | default({}) }}"
@@ -117,4 +120,5 @@ sys_repository_catalog_apt_distro:
     docker: true
   Ubuntu21:
     docker: true
+sys_repository_catalog_brew: {}
 ...
