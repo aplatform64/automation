@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0]
+
+### Removed
+
+- Playbooks: manage_cloud_population, manage_cloud_realm
+
 ## [2.0.0]
 
 ### Added
