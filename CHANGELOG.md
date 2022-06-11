@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- Playbooks: manage_cloud_population, manage_cloud_realm
+- Obsolete playbooks: manage_cloud_population, manage_cloud_realm
 
 ## [2.0.0]
 
@@ -110,7 +110,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.7.1]
 
-[unreleased]: https://github.com/serdigital64/aplatform64/compare/1.13.0...HEAD
+[unreleased]: https://github.com/serdigital64/aplatform64/compare/2.1.1...HEAD
+[2.1.0]: https://github.com/serdigital64/aplatform64/compare/2.0.0...2.1.1
+[2.0.0]: https://github.com/serdigital64/aplatform64/compare/1.13.0...2.0.0
 [1.13.0]: https://github.com/serdigital64/aplatform64/compare/1.12.0...1.13.0
 [1.12.0]: https://github.com/serdigital64/aplatform64/compare/1.11.0...1.12.0
 [1.11.0]: https://github.com/serdigital64/aplatform64/compare/1.10.0...1.11.0
