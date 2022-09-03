@@ -25,16 +25,4 @@
       - "{{ auto_aplatform64_bootstrap_node_fqdn }}"
   ansible.builtin.include_role:
     name: "serdigital64.automation.auto_ansible_control"
-
-- name: "Automation / A:Platform64 / Provision / Node / New / Prepare remote node"
-  vars:
-    ansible_ssh_common_args: "-o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no"
-    ansible_user: "{{ auto_aplatform64_bootstrap_node_user }}"
-    ansible_password: "{{ auto_aplatform64_bootstrap_node_password }}"
-    ansible_become_method: "sudo"
-    ansible_become_password: "{{ ansible_password }}"
-    auto_ansible_node:
-      prepare: true
-  ansible.builtin.include_role:
-    name: "serdigital64.automation.auto_ansible_node"
 ...

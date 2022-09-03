@@ -10,6 +10,13 @@
     - auto_ansible_node['prepare'] is defined
     - auto_ansible_node['prepare']
 
+- name: "Automation / Ansible / Node / Provision"
+  ansible.builtin.include_tasks:
+    file: "auto_ansible_node_provision.yml"
+  when:
+    - auto_ansible_node['provision'] is defined
+    - auto_ansible_node['provision']
+
 - name: "Automation / Ansible / Node / Finalize"
   ansible.builtin.include_tasks:
     file: "auto_ansible_node_finalize.yml"
