@@ -1,19 +1,36 @@
 ---
-- name: "Manage A:Platform64 managed nodes"
+- name: "Manage A:Platform64 managed nodes / Phase 1"
   hosts: "aplatform64_servers"
   gather_facts: false
 
   pre_tasks:
-
     - name: "Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
 
   tasks:
-    - name: "Provision node"
+    - name: "Register node"
       vars:
         auto_aplatform64:
           provision: true
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_aplatform64"
+
+- name: "Manage A:Platform64 managed nodes / Phase 2"
+  hosts: "{{ auto_aplatform64_bootstrap_node_fqdn }}"
+  gather_facts: false
+  vars:
+    ansible_ssh_common_args: "-o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no"
+    ansible_user: "{{ auto_aplatform64_bootstrap_node_user }}"
+    ansible_password: "{{ auto_aplatform64_bootstrap_node_password }}"
+    ansible_become_method: "sudo"
+    ansible_become_password: "{{ ansible_password }}"
+
+  tasks:
+    - name: "Configure node"
+      vars:
+        auto_ansible_node:
+          prepare: true
+      ansible.builtin.include_role:
+        name: "serdigital64.automation.auto_ansible_node"
 ...
