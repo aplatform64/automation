@@ -7,6 +7,8 @@
     - name: "Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
+      when:
+        - manage_aplatform64_nodes_phase == '1'
 
   tasks:
     - name: "Register node"
@@ -29,10 +31,19 @@
     ansible_become_password: "{{ ansible_password }}"
 
   tasks:
+    - name: "Load site settings"
+      ansible.builtin.include_role:
+        name: "serdigital64.automation.auto_aplatform64"
+        public: true
+      when:
+        - manage_aplatform64_nodes_phase == '2'
+
     - name: "Configure node"
       vars:
         auto_ansible_node:
           prepare: true
+          provision: true
+        auto_ansible_node_key_file: "{{ auto_ansible_control_base['files']['managed_public_key'] }}"
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_ansible_node"
       when:
