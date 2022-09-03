@@ -15,9 +15,11 @@
           provision: true
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_aplatform64"
+      when:
+        - manage_aplatform64_nodes_phase == '1'
 
 - name: "Manage A:Platform64 managed nodes / Phase 2"
-  hosts: "{{ auto_aplatform64_bootstrap_node_fqdn }}"
+  hosts: "aplatform64_nodes"
   gather_facts: false
   vars:
     ansible_ssh_common_args: "-o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no"
@@ -33,4 +35,6 @@
           prepare: true
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_ansible_node"
+      when:
+        - manage_aplatform64_nodes_phase == '2'
 ...
