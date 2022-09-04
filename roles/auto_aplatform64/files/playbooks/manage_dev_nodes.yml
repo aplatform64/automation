@@ -4,11 +4,11 @@
   gather_facts: false
 
   pre_tasks:
-    - name: "Discover Target Platform"
+    - name: "Manage Dev Nodes / Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
 
-    - name: "Initialize global variables"
+    - name: "Manage Dev Nodes / Initialize global variables"
       ansible.builtin.set_fact:
         manage_dev_nodes_yum_distro: "
           {%- if (ansible_distribution == 'CentOS') or
@@ -32,7 +32,7 @@
           {%- endif -%}
           "
 
-    - name: "Prepare package repositories"
+    - name: "Manage Dev Nodes / Prepare package repositories"
       vars:
         sys_repository:
           prepare: true
@@ -42,14 +42,14 @@
       ansible.builtin.include_role:
         name: "serdigital64.system.sys_repository"
 
-    - name: "Prepare archive manager"
+    - name: "Manage Dev Nodes / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
         name: "serdigital64.backup.bkp_archive"
 
-    - name: "Prepare package installer"
+    - name: "Manage Dev Nodes / Prepare package installer"
       vars:
         sys_package:
           prepare: true
@@ -57,7 +57,7 @@
         name: "serdigital64.system.sys_package"
 
   tasks:
-    - name: "Provision common development tools"
+    - name: "Manage Dev Nodes / Provision common development tools"
       vars:
         dev_tools:
           deploy: true
@@ -67,7 +67,7 @@
         - dev_nodes_apps['tools'] is defined
         - dev_nodes_apps['tools']
 
-    - name: "Provision GIT client"
+    - name: "Manage Dev Nodes / Provision GIT client"
       vars:
         dops_git_client:
           deploy: true
@@ -79,7 +79,7 @@
         - dev_nodes_apps['git_client'] is defined
         - dev_nodes_apps['git_client']
 
-    - name: "Provision GitHUB CLI"
+    - name: "Manage Dev Nodes / Provision GitHUB CLI"
       vars:
         dops_github_cli:
           deploy: true
@@ -91,7 +91,7 @@
         - dev_nodes_apps['github_cli'] is defined
         - dev_nodes_apps['github_cli']
 
-    - name: "Provision GCC development environment"
+    - name: "Manage Dev Nodes / Provision GCC development environment"
       vars:
         dev_gcc:
           deploy: true
@@ -101,7 +101,7 @@
         - dev_nodes_apps['gcc'] is defined
         - dev_nodes_apps['gcc']
 
-    - name: "Provision Ruby development environment"
+    - name: "Manage Dev Nodes / Provision Ruby development environment"
       vars:
         dev_ruby:
           deploy: true
@@ -111,7 +111,7 @@
         - dev_nodes_apps['ruby'] is defined
         - dev_nodes_apps['ruby']
 
-    - name: "Provision Java development environment"
+    - name: "Manage Dev Nodes / Provision Java development environment"
       vars:
         dev_java:
           deploy: true
@@ -121,7 +121,7 @@
         - dev_nodes_apps['java'] is defined
         - dev_nodes_apps['java']
 
-    - name: "Provision Python development environment"
+    - name: "Manage Dev Nodes / Provision Python development environment"
       vars:
         dev_python:
           deploy: true
@@ -131,7 +131,7 @@
         - dev_nodes_apps['python'] is defined
         - dev_nodes_apps['python']
 
-    - name: "Provision NodeJS development environment"
+    - name: "Manage Dev Nodes / Provision NodeJS development environment"
       vars:
         dev_nodejs:
           deploy: true
@@ -141,7 +141,7 @@
         - dev_nodes_apps['nodejs'] is defined
         - dev_nodes_apps['nodejs']
 
-    - name: "Provision Vagrant tool"
+    - name: "Manage Dev Nodes / Provision Vagrant tool"
       vars:
         infra_vagrant:
           deploy: true
@@ -151,7 +151,7 @@
         - dev_nodes_apps['vagrant'] is defined
         - dev_nodes_apps['vagrant']
 
-    - name: "Provision VSCode IDE"
+    - name: "Manage Dev Nodes / Provision VSCode IDE"
       vars:
         app_vscode:
           deploy: true
