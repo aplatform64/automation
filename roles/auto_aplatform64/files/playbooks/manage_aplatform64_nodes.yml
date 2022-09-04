@@ -4,14 +4,14 @@
   gather_facts: false
 
   pre_tasks:
-    - name: "Discover Target Platform"
+    - name: "Manage A:Platform64 managed nodes / Phase 1 / Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
       when:
         - manage_aplatform64_nodes_phase == '1'
 
   tasks:
-    - name: "Register node"
+    - name: "Manage A:Platform64 managed nodes / Phase 1 / Register node"
       vars:
         auto_aplatform64:
           provision: true
@@ -30,15 +30,23 @@
     ansible_become_method: "sudo"
     ansible_become_password: "{{ ansible_password }}"
 
+  pre_tasks:
+    - name: "Manage A:Platform64 managed nodes / Phase 2 / Discover Target Platform"
+      delegate_to: "localhost"
+      ansible.builtin.setup:
+        gather_subset: "min"
+      when:
+        - manage_aplatform64_nodes_phase == '2'
+
   tasks:
-    - name: "Load site settings"
+    - name: "Manage A:Platform64 managed nodes / Phase 2 / Load site settings"
       ansible.builtin.include_role:
         name: "serdigital64.automation.auto_aplatform64"
         public: true
       when:
         - manage_aplatform64_nodes_phase == '2'
 
-    - name: "Configure node"
+    - name: "Manage A:Platform64 managed nodes / Phase 2 / Configure node"
       vars:
         auto_ansible_node:
           prepare: true

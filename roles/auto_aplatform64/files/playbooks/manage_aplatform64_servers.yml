@@ -4,12 +4,12 @@
   gather_facts: false
 
   pre_tasks:
-    - name: "Discover Target Platform"
+    - name: "Manage A:Platform control nodes / Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
 
   tasks:
-    - name: "Provision A:Platform64"
+    - name: "Manage A:Platform control nodes / Provision A:Platform64"
       vars:
         auto_aplatform64:
           prepare: true

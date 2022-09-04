@@ -7,12 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.2.2]
+## [2.2.3]
 
 ### Fixed
 
-- Remote node setup
-- Added missing repository for Docker on Ubuntu22
+- auto_aplatform64:
+  - Remote node setup
+  - Added missing repository for Docker on Ubuntu22
+  - Added missing nfs client for autofs
 
 ### Added
 
@@ -121,10 +123,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.7.1]
 
-[unreleased]: https://github.com/serdigital64/aplatform64/compare/2.2.2...HEAD
-[2.2.2]: https://github.com/serdigital64/aplatform64/compare/2.2.0...2.2.2
+[unreleased]: https://github.com/serdigital64/aplatform64/compare/2.2.3...HEAD
+[2.2.3]: https://github.com/serdigital64/aplatform64/compare/2.2.0...2.2.3
 [2.2.0]: https://github.com/serdigital64/aplatform64/compare/2.1.0...2.2.0
-[2.1.0]: https://github.com/serdigital64/aplatform64/compare/2.0.0...2.1.1
+[2.1.0]: https://github.com/serdigital64/aplatform64/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/serdigital64/aplatform64/compare/1.13.0...2.0.0
 [1.13.0]: https://github.com/serdigital64/aplatform64/compare/1.12.0...1.13.0
 [1.12.0]: https://github.com/serdigital64/aplatform64/compare/1.11.0...1.12.0
