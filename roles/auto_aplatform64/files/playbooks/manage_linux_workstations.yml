@@ -4,11 +4,11 @@
   gather_facts: false
 
   pre_tasks:
-    - name: "Discover Target Platform"
+    - name: "Manage Linux Workstations / Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
 
-    - name: "Prepare package repositories"
+    - name: "Manage Linux Workstations / Prepare package repositories"
       vars:
         sys_repository:
           prepare: true
@@ -18,14 +18,14 @@
       ansible.builtin.include_role:
         name: "serdigital64.system.sys_repository"
 
-    - name: "Prepare archive manager"
+    - name: "Manage Linux Workstations / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
         name: "serdigital64.backup.bkp_archive"
 
-    - name: "Prepare package installer"
+    - name: "Manage Linux Workstations / Prepare package installer"
       vars:
         sys_package:
           prepare: true
@@ -34,7 +34,7 @@
 
   tasks:
 
-    - name: "Provision OpenSSH server"
+    - name: "Manage Linux Workstations / Provision OpenSSH server"
       vars:
         sec_openssh_server:
           deploy: true
@@ -44,7 +44,7 @@
         - linux_workstations_component['openssh_server'] is defined
         - linux_workstations_component['openssh_server']
 
-    - name: "Provision Docker"
+    - name: "Manage Linux Workstations / Provision Docker"
       vars:
         cnt_docker:
           deploy: true
@@ -54,7 +54,7 @@
         - linux_workstations_component['docker'] is defined
         - linux_workstations_component['docker']
 
-    - name: "Provision Podman"
+    - name: "Manage Linux Workstations / Provision Podman"
       vars:
         cnt_podman:
           deploy: true
@@ -64,7 +64,7 @@
         - linux_workstations_component['podman'] is defined
         - linux_workstations_component['podman']
 
-    - name: "Provision AutoFS"
+    - name: "Manage Linux Workstations / Provision AutoFS"
       vars:
         stg_autofs:
           prepare: true
@@ -78,7 +78,7 @@
         - linux_workstations_component['autofs'] is defined
         - linux_workstations_component['autofs']
 
-    - name: "Provision fonts"
+    - name: "Manage Linux Workstations / Provision fonts"
       vars:
         sys_fonts:
           prepare: true
@@ -89,7 +89,7 @@
         - linux_workstations_component['fonts'] is defined
         - linux_workstations_component['fonts']
 
-    - name: "Provision unix users and groups"
+    - name: "Manage Linux Workstations / Provision unix users and groups"
       vars:
         sys_user:
           setup: true
@@ -99,7 +99,7 @@
         - linux_workstations_component['users'] is defined
         - linux_workstations_component['users']
 
-    - name: "Provision unix shells"
+    - name: "Manage Linux Workstations / Provision unix shells"
       vars:
         sys_shell:
           deploy: true
@@ -110,7 +110,7 @@
         - linux_workstations_component['shell'] is defined
         - linux_workstations_component['shell']
 
-    - name: "Deploy and configure SUDO"
+    - name: "Manage Linux Workstations / Deploy and configure SUDO"
       vars:
         sys_sudo:
           deploy: true
@@ -121,7 +121,7 @@
         - linux_workstations_component['sudo'] is defined
         - linux_workstations_component['sudo']
 
-    - name: "Provision OpenSSH client"
+    - name: "Manage Linux Workstations / Provision OpenSSH client"
       vars:
         sec_openssh_client:
           deploy: true
@@ -131,7 +131,7 @@
         - linux_workstations_component['openssh_client'] is defined
         - linux_workstations_component['openssh_client']
 
-    - name: "Provision DConf service"
+    - name: "Manage Linux Workstations / Provision DConf service"
       vars:
         sys_dconf:
           prepare: true
@@ -143,7 +143,7 @@
         - linux_workstations_component['dconf'] is defined
         - linux_workstations_component['dconf']
 
-    - name: "Provision Cinnamon desktop manager"
+    - name: "Manage Linux Workstations / Provision Cinnamon desktop manager"
       vars:
         sys_gui_cinnamon:
           prepare: true
@@ -155,7 +155,7 @@
         - linux_workstations_component['cinnamon'] is defined
         - linux_workstations_component['cinnamon']
 
-    - name: "Provision MC tool"
+    - name: "Manage Linux Workstations / Provision MC tool"
       vars:
         sys_mc:
           deploy: true
@@ -166,7 +166,7 @@
         - linux_workstations_component['mc'] is defined
         - linux_workstations_component['mc']
 
-    - name: "Provision Tilix tool"
+    - name: "Manage Linux Workstations / Provision Tilix tool"
       vars:
         app_tilix:
           prepare: true

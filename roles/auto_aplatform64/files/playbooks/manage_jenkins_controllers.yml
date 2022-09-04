@@ -4,11 +4,11 @@
   gather_facts: false
 
   pre_tasks:
-    - name: "Discover Target Platform"
+    - name: "Manage Jenkins controllers / Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
 
-    - name: "Prepare package repositories"
+    - name: "Manage Jenkins controllers / Prepare package repositories"
       vars:
         sys_repository:
           prepare: true
@@ -16,51 +16,51 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_repository"
+        name: "Manage Jenkins controllers / serdigital64.system.sys_repository"
 
-    - name: "Prepare archive manager"
+    - name: "Manage Jenkins controllers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.backup.bkp_archive"
+        name: "Manage Jenkins controllers / serdigital64.backup.bkp_archive"
 
-    - name: "Prepare package installer"
+    - name: "Manage Jenkins controllers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_package"
+        name: "Manage Jenkins controllers / serdigital64.system.sys_package"
 
   tasks:
-    - name: "Prepare OS subsystem manager"
+    - name: "Manage Jenkins controllers / Prepare OS subsystem manager"
       vars:
         sys_subsystem:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_subsystem"
+        name: "Manage Jenkins controllers / serdigital64.system.sys_subsystem"
       when:
         - jenkins_controllers_apps['jenkins'] is defined
         - jenkins_controllers_apps['jenkins']
 
-    - name: "Provision OpenJDK 11 for Jenkins"
+    - name: "Manage Jenkins controllers / Provision OpenJDK 11 for Jenkins"
       vars:
         dev_java:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.development.dev_java"
+        name: "Manage Jenkins controllers / serdigital64.development.dev_java"
       when:
         - jenkins_controllers_apps['jenkins'] is defined
         - jenkins_controllers_apps['jenkins']
 
-    - name: "Provision Jenkins Controller"
+    - name: "Manage Jenkins controllers / Provision Jenkins Controller"
       vars:
         dops_jenkins:
           deploy: true
           setup: true
           control: true
       ansible.builtin.include_role:
-        name: "serdigital64.devops.dops_jenkins"
+        name: "Manage Jenkins controllers / serdigital64.devops.dops_jenkins"
       when:
         - jenkins_controllers_apps['jenkins'] is defined
         - jenkins_controllers_apps['jenkins']

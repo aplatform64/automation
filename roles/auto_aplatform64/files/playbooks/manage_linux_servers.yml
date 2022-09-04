@@ -4,11 +4,11 @@
   gather_facts: false
 
   pre_tasks:
-    - name: "Discover Target Platform"
+    - name: "Manage Linux Servers / Discover Target Platform"
       ansible.builtin.setup:
         gather_subset: "min"
 
-    - name: "Prepare package repositories"
+    - name: "Manage Linux Servers / Prepare package repositories"
       vars:
         sys_repository:
           prepare: true
@@ -16,55 +16,55 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_repository"
+        name: "Manage Linux Servers / serdigital64.system.sys_repository"
 
-    - name: "Prepare archive manager"
+    - name: "Manage Linux Servers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.backup.bkp_archive"
+        name: "Manage Linux Servers / serdigital64.backup.bkp_archive"
 
-    - name: "Prepare package installer"
+    - name: "Manage Linux Servers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_package"
+        name: "Manage Linux Servers / serdigital64.system.sys_package"
 
   tasks:
 
-    - name: "Provision OpenSSH server"
+    - name: "Manage Linux Servers / Provision OpenSSH server"
       vars:
         sec_openssh_server:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.security.sec_openssh_server"
+        name: "Manage Linux Servers / serdigital64.security.sec_openssh_server"
       when:
         - linux_servers_component['openssh_server'] is defined
         - linux_servers_component['openssh_server']
 
-    - name: "Provision Docker"
+    - name: "Manage Linux Servers / Provision Docker"
       vars:
         cnt_docker:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.container.cnt_docker"
+        name: "Manage Linux Servers / serdigital64.container.cnt_docker"
       when:
         - linux_servers_component['docker'] is defined
         - linux_servers_component['docker']
 
-    - name: "Provision Podman"
+    - name: "Manage Linux Servers / Provision Podman"
       vars:
         cnt_podman:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.container.cnt_podman"
+        name: "Manage Linux Servers / serdigital64.container.cnt_podman"
       when:
         - linux_servers_component['podman'] is defined
         - linux_servers_component['podman']
 
-    - name: "Provision AutoFS"
+    - name: "Manage Linux Servers / Provision AutoFS"
       vars:
         stg_autofs:
           prepare: true
@@ -73,71 +73,71 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "serdigital64.storage.stg_autofs"
+        name: "Manage Linux Servers / serdigital64.storage.stg_autofs"
       when:
         - linux_servers_component['autofs'] is defined
         - linux_servers_component['autofs']
 
-    - name: "Provision fonts"
+    - name: "Manage Linux Servers / Provision fonts"
       vars:
         sys_fonts:
           prepare: true
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_fonts"
+        name: "Manage Linux Servers / serdigital64.system.sys_fonts"
       when:
         - linux_servers_component['fonts'] is defined
         - linux_servers_component['fonts']
 
-    - name: "Provision unix users and groups"
+    - name: "Manage Linux Servers / Provision unix users and groups"
       vars:
         sys_user:
           setup: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_user"
+        name: "Manage Linux Servers / serdigital64.system.sys_user"
       when:
         - linux_servers_component['users'] is defined
         - linux_servers_component['users']
 
-    - name: "Provision unix shells"
+    - name: "Manage Linux Servers / Provision unix shells"
       vars:
         sys_shell:
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_shell"
+        name: "Manage Linux Servers / serdigital64.system.sys_shell"
       when:
         - linux_servers_component['shell'] is defined
         - linux_servers_component['shell']
 
-    - name: "Deploy and configure SUDO"
+    - name: "Manage Linux Servers / Deploy and configure SUDO"
       vars:
         sys_sudo:
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_sudo"
+        name: "Manage Linux Servers / serdigital64.system.sys_sudo"
       when:
         - linux_servers_component['sudo'] is defined
         - linux_servers_component['sudo']
 
-    - name: "Provision OpenSSH client"
+    - name: "Manage Linux Servers / Provision OpenSSH client"
       vars:
         sec_openssh_client:
           deploy: true
       ansible.builtin.include_role:
-        name: "serdigital64.security.sec_openssh_client"
+        name: "Manage Linux Servers / serdigital64.security.sec_openssh_client"
       when:
         - linux_servers_component['openssh_client'] is defined
         - linux_servers_component['openssh_client']
 
-    - name: "Provision MC tool"
+    - name: "Manage Linux Servers / Provision MC tool"
       vars:
         sys_mc:
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "serdigital64.system.sys_mc"
+        name: "Manage Linux Servers / serdigital64.system.sys_mc"
       when:
         - linux_servers_component['mc'] is defined
         - linux_servers_component['mc']
