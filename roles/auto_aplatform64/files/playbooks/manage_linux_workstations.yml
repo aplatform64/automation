@@ -64,6 +64,16 @@
         - linux_workstations_component['podman'] is defined
         - linux_workstations_component['podman']
 
+    - name: "Manage Linux Workstations / Provision NFS client"
+      vars:
+        stg_nfs_client:
+          deploy: true
+      ansible.builtin.include_role:
+        name: "serdigital64.storage.stg_nfs_client"
+      when:
+        - linux_workstations_component['autofs'] is defined
+        - linux_workstations_component['autofs']
+
     - name: "Manage Linux Workstations / Provision AutoFS"
       vars:
         stg_autofs:
