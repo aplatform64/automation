@@ -16,21 +16,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Dev Nodes / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage Dev Nodes / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Dev Nodes / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage Dev Nodes / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage Dev Nodes / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
     - name: "Manage Dev Nodes / Provision MkDocs"
@@ -38,7 +38,7 @@
         web_mkdocs:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Dev Nodes / serdigital64.web.web_mkdocs"
+        name: "serdigital64.web.web_mkdocs"
       when:
         - doc_sites_apps['mkdocs'] is defined
         - doc_sites_apps['mkdocs']

@@ -16,21 +16,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Linux Workstations / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage Linux Workstations / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Linux Workstations / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage Linux Workstations / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage Linux Workstations / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
 
@@ -39,7 +39,7 @@
         sys_user:
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Workstations / serdigital64.system.sys_user"
+        name: "serdigital64.system.sys_user"
       when:
         - macos_workstations_component['users'] is defined
         - macos_workstations_component['users']
@@ -50,7 +50,7 @@
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Workstations / serdigital64.system.sys_shell"
+        name: "serdigital64.system.sys_shell"
       when:
         - macos_workstations_component['shell'] is defined
         - macos_workstations_component['shell']
@@ -61,7 +61,7 @@
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Workstations / serdigital64.system.sys_sudo"
+        name: "serdigital64.system.sys_sudo"
       when:
         - macos_workstations_component['sudo'] is defined
         - macos_workstations_component['sudo']
@@ -72,7 +72,7 @@
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Workstations / serdigital64.system.sys_mc"
+        name: "serdigital64.system.sys_mc"
       when:
         - macos_workstations_component['mc'] is defined
         - macos_workstations_component['mc']

@@ -17,21 +17,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage file servers / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage file servers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage file servers / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage file servers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage file servers / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
 
@@ -41,7 +41,7 @@
           prepare: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage file servers / serdigital64.storage.stg_repository"
+        name: "serdigital64.storage.stg_repository"
       when:
         - file_servers_apps['repository'] is defined
         - file_servers_apps['repository']
@@ -54,7 +54,7 @@
           control: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage file servers / serdigital64.storage.stg_nfs_server"
+        name: "serdigital64.storage.stg_nfs_server"
       when:
         - file_servers_apps['nfs'] is defined
         - file_servers_apps['nfs']
