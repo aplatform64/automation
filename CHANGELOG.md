@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0]
+
+### Added
+
+- all: OracleLinux9 support
+
 ## [3.0.0]
 
 ### Changed
@@ -129,7 +135,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.7.1]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/serdigital64/aplatform64/compare/3.1.0...HEAD
+[3.1.0]: https://github.com/serdigital64/aplatform64/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/serdigital64/aplatform64/compare/2.2.3...3.0.0
 [2.2.3]: https://github.com/serdigital64/aplatform64/compare/2.2.0...2.2.3
 [2.1.0]: https://github.com/serdigital64/aplatform64/compare/2.0.0...2.1.0
