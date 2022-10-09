@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.2]
+
+### Fixed
+
+- auto_aplatform64:
+  - task names
+
+### Added
+
+- auto_aplatform64:
+  - libvirt_servers playbook
+
 ## [3.1.0]
 
 ### Added
@@ -135,7 +147,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.7.1]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/3.1.0...HEAD
+[Unreleased]: https://github.com/serdigital64/aplatform64/compare/3.2.2...HEAD
+[3.2.2]: https://github.com/serdigital64/aplatform64/compare/3.1.0...3.2.2
 [3.1.0]: https://github.com/serdigital64/aplatform64/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/serdigital64/aplatform64/compare/2.2.3...3.0.0
 [2.2.3]: https://github.com/serdigital64/aplatform64/compare/2.2.0...2.2.3
