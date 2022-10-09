@@ -16,21 +16,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage Test Nodes / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage Test Nodes / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
     - name: "Manage Test Nodes / Provision AnsibleLint"
@@ -38,7 +38,7 @@
         dops_ansiblelint:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.devops.dops_ansiblelint"
+        name: "serdigital64.devops.dops_ansiblelint"
       when:
         - test_nodes_apps['ansiblelint'] is defined
         - test_nodes_apps['ansiblelint']
@@ -49,7 +49,7 @@
           prepare: true
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.devops.dops_batscore"
+        name: "serdigital64.devops.dops_batscore"
       when:
         - test_nodes_apps['batscore'] is defined
         - test_nodes_apps['batscore']
@@ -59,7 +59,7 @@
         dops_molecule:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.devops.dops_molecule"
+        name: "serdigital64.devops.dops_molecule"
       when:
         - test_nodes_apps['molecule'] is defined
         - test_nodes_apps['molecule']
@@ -69,7 +69,7 @@
         dops_shellcheck:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.devops.dops_shellcheck"
+        name: "serdigital64.devops.dops_shellcheck"
       when:
         - test_nodes_apps['shellcheck'] is defined
         - test_nodes_apps['shellcheck']
@@ -79,7 +79,7 @@
         dops_yamllint:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Test Nodes / serdigital64.devops.dops_yamllint"
+        name: "serdigital64.devops.dops_yamllint"
       when:
         - test_nodes_apps['yamllint'] is defined
         - test_nodes_apps['yamllint']

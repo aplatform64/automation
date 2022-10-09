@@ -17,21 +17,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage GIT servers / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage GIT servers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage GIT servers / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage GIT servers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage GIT servers / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
 
@@ -43,7 +43,7 @@
           deploy: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage GIT servers / serdigital64.devops.dops_git_server"
+        name: "serdigital64.devops.dops_git_server"
       when:
         - git_servers_apps['git'] is defined
         - git_servers_apps['git']

@@ -16,28 +16,28 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage GitLab Servers / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage GitLab Servers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage GitLab Servers / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage GitLab Servers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage GitLab Servers / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
     - name: "Manage GitLab Servers / Prepare OS Firewall"
       vars:
         sec_firewall_os:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage GitLab Servers / serdigital64.security.sec_firewall_os"
+        name: "serdigital64.security.sec_firewall_os"
 
   tasks:
     - name: "Manage GitLab Servers / Provision GitLab Server"
@@ -47,7 +47,7 @@
           setup: true
           control: true
       ansible.builtin.include_role:
-        name: "Manage GitLab Servers / serdigital64.devops.dops_gitlab_server"
+        name: "serdigital64.devops.dops_gitlab_server"
       when:
         - gitlab_servers_apps['gitlab'] is defined
         - gitlab_servers_apps['gitlab']

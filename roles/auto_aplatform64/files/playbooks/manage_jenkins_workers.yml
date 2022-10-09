@@ -16,21 +16,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins workers / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage Jenkins workers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins workers / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage Jenkins workers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins workers / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
     - name: "Manage Jenkins workers / Provision OpenJDK 11 for Jenkins"
@@ -38,7 +38,7 @@
         dev_java:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins workers / serdigital64.development.dev_java"
+        name: "serdigital64.development.dev_java"
       when:
         - jenkins_workers_apps['jenkins'] is defined
         - jenkins_workers_apps['jenkins']
@@ -48,5 +48,5 @@
         sys_user:
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins workers / serdigital64.system.sys_user"
+        name: "serdigital64.system.sys_user"
 ...

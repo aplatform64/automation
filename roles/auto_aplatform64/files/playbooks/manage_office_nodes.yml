@@ -16,21 +16,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage Office Nodes / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage Office Nodes / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
 
@@ -39,7 +39,7 @@
         app_darktable:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_darktable"
+        name: "serdigital64.application.app_darktable"
       when:
         - office_nodes_apps['darktable'] is defined
         - office_nodes_apps['darktable']
@@ -49,7 +49,7 @@
         app_bender:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_bender"
+        name: "serdigital64.application.app_bender"
       when:
         - office_nodes_apps['bender'] is defined
         - office_nodes_apps['bender']
@@ -59,7 +59,7 @@
         app_drawio:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_drawio"
+        name: "serdigital64.application.app_drawio"
       when:
         - office_nodes_apps['drawio'] is defined
         - office_nodes_apps['drawio']
@@ -69,7 +69,7 @@
         app_chrome:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_chrome"
+        name: "serdigital64.application.app_chrome"
       when:
         - office_nodes_apps['chrome'] is defined
         - office_nodes_apps['chrome']
@@ -79,7 +79,7 @@
         app_firefox:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_firefox"
+        name: "serdigital64.application.app_firefox"
       when:
         - office_nodes_apps['firefox'] is defined
         - office_nodes_apps['firefox']
@@ -89,7 +89,7 @@
         app_freecad:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_freecad"
+        name: "serdigital64.application.app_freecad"
       when:
         - office_nodes_apps['freecad'] is defined
         - office_nodes_apps['freecad']
@@ -99,7 +99,7 @@
         app_gimp:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_gimp"
+        name: "serdigital64.application.app_gimp"
       when:
         - office_nodes_apps['gimp'] is defined
         - office_nodes_apps['gimp']
@@ -109,7 +109,7 @@
         app_inkscape:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_inkscape"
+        name: "serdigital64.application.app_inkscape"
       when:
         - office_nodes_apps['inkscape'] is defined
         - office_nodes_apps['inkscape']
@@ -120,7 +120,7 @@
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_keepassxc"
+        name: "serdigital64.application.app_keepassxc"
       when:
         - office_nodes_apps['keepassxc'] is defined
         - office_nodes_apps['keepassxc']
@@ -130,7 +130,7 @@
         app_kryta:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_kryta"
+        name: "serdigital64.application.app_kryta"
       when:
         - office_nodes_apps['kryta'] is defined
         - office_nodes_apps['kryta']
@@ -140,7 +140,7 @@
         app_libreoffice:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_libreoffice"
+        name: "serdigital64.application.app_libreoffice"
       when:
         - office_nodes_apps['libreoffice'] is defined
         - office_nodes_apps['libreoffice']
@@ -150,7 +150,7 @@
         app_msteams:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_msteams"
+        name: "serdigital64.application.app_msteams"
       when:
         - office_nodes_apps['msteams'] is defined
         - office_nodes_apps['msteams']
@@ -160,7 +160,7 @@
         app_obs:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_obs"
+        name: "serdigital64.application.app_obs"
       when:
         - office_nodes_apps['obs'] is defined
         - office_nodes_apps['obs']
@@ -170,7 +170,7 @@
         app_pinta:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_pinta"
+        name: "serdigital64.application.app_pinta"
       when:
         - office_nodes_apps['pinta'] is defined
         - office_nodes_apps['pinta']
@@ -180,7 +180,7 @@
         app_pitivi:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_pitivi"
+        name: "serdigital64.application.app_pitivi"
       when:
         - office_nodes_apps['pitivi'] is defined
         - office_nodes_apps['pitivi']
@@ -190,7 +190,7 @@
         app_shotcut:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_shotcut"
+        name: "serdigital64.application.app_shotcut"
       when:
         - office_nodes_apps['shotcut'] is defined
         - office_nodes_apps['shotcut']
@@ -200,7 +200,7 @@
         app_slack:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_slack"
+        name: "serdigital64.application.app_slack"
       when:
         - office_nodes_apps['slack'] is defined
         - office_nodes_apps['slack']
@@ -210,7 +210,7 @@
         app_skype:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_skype"
+        name: "serdigital64.application.app_skype"
       when:
         - office_nodes_apps['skype'] is defined
         - office_nodes_apps['skype']
@@ -220,7 +220,7 @@
         app_spotify:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_spotify"
+        name: "serdigital64.application.app_spotify"
       when:
         - office_nodes_apps['spotify'] is defined
         - office_nodes_apps['spotify']
@@ -230,7 +230,7 @@
         app_zoom:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Office Nodes / serdigital64.application.app_zoom"
+        name: "serdigital64.application.app_zoom"
       when:
         - office_nodes_apps['zoom'] is defined
         - office_nodes_apps['zoom']

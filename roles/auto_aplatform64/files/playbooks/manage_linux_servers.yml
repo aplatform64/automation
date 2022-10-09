@@ -16,21 +16,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage Linux Servers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage Linux Servers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
 
@@ -39,7 +39,7 @@
         sec_openssh_server:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.security.sec_openssh_server"
+        name: "serdigital64.security.sec_openssh_server"
       when:
         - linux_servers_component['openssh_server'] is defined
         - linux_servers_component['openssh_server']
@@ -49,7 +49,7 @@
         cnt_docker:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.container.cnt_docker"
+        name: "serdigital64.container.cnt_docker"
       when:
         - linux_servers_component['docker'] is defined
         - linux_servers_component['docker']
@@ -59,7 +59,7 @@
         cnt_podman:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.container.cnt_podman"
+        name: "serdigital64.container.cnt_podman"
       when:
         - linux_servers_component['podman'] is defined
         - linux_servers_component['podman']
@@ -73,7 +73,7 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.storage.stg_autofs"
+        name: "serdigital64.storage.stg_autofs"
       when:
         - linux_servers_component['autofs'] is defined
         - linux_servers_component['autofs']
@@ -84,7 +84,7 @@
           prepare: true
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.system.sys_fonts"
+        name: "serdigital64.system.sys_fonts"
       when:
         - linux_servers_component['fonts'] is defined
         - linux_servers_component['fonts']
@@ -94,7 +94,7 @@
         sys_user:
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.system.sys_user"
+        name: "serdigital64.system.sys_user"
       when:
         - linux_servers_component['users'] is defined
         - linux_servers_component['users']
@@ -105,7 +105,7 @@
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.system.sys_shell"
+        name: "serdigital64.system.sys_shell"
       when:
         - linux_servers_component['shell'] is defined
         - linux_servers_component['shell']
@@ -116,7 +116,7 @@
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.system.sys_sudo"
+        name: "serdigital64.system.sys_sudo"
       when:
         - linux_servers_component['sudo'] is defined
         - linux_servers_component['sudo']
@@ -126,7 +126,7 @@
         sec_openssh_client:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.security.sec_openssh_client"
+        name: "serdigital64.security.sec_openssh_client"
       when:
         - linux_servers_component['openssh_client'] is defined
         - linux_servers_component['openssh_client']
@@ -137,7 +137,7 @@
           deploy: true
           setup: true
       ansible.builtin.include_role:
-        name: "Manage Linux Servers / serdigital64.system.sys_mc"
+        name: "serdigital64.system.sys_mc"
       when:
         - linux_servers_component['mc'] is defined
         - linux_servers_component['mc']

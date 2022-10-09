@@ -16,21 +16,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins controllers / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage Jenkins controllers / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins controllers / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage Jenkins controllers / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins controllers / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
     - name: "Manage Jenkins controllers / Prepare OS subsystem manager"
@@ -38,7 +38,7 @@
         sys_subsystem:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins controllers / serdigital64.system.sys_subsystem"
+        name: "serdigital64.system.sys_subsystem"
       when:
         - jenkins_controllers_apps['jenkins'] is defined
         - jenkins_controllers_apps['jenkins']
@@ -48,7 +48,7 @@
         dev_java:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins controllers / serdigital64.development.dev_java"
+        name: "serdigital64.development.dev_java"
       when:
         - jenkins_controllers_apps['jenkins'] is defined
         - jenkins_controllers_apps['jenkins']
@@ -60,7 +60,7 @@
           setup: true
           control: true
       ansible.builtin.include_role:
-        name: "Manage Jenkins controllers / serdigital64.devops.dops_jenkins"
+        name: "serdigital64.devops.dops_jenkins"
       when:
         - jenkins_controllers_apps['jenkins'] is defined
         - jenkins_controllers_apps['jenkins']
