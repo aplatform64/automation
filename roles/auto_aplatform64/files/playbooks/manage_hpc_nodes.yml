@@ -23,21 +23,21 @@
           setup: true
           provision: true
       ansible.builtin.include_role:
-        name: "Manage HPC Nodes / serdigital64.system.sys_repository"
+        name: "serdigital64.system.sys_repository"
 
     - name: "Manage HPC Nodes / Prepare archive manager"
       vars:
         bkp_archive:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage HPC Nodes / serdigital64.backup.bkp_archive"
+        name: "serdigital64.backup.bkp_archive"
 
     - name: "Manage HPC Nodes / Prepare package installer"
       vars:
         sys_package:
           prepare: true
       ansible.builtin.include_role:
-        name: "Manage HPC Nodes / serdigital64.system.sys_package"
+        name: "serdigital64.system.sys_package"
 
   tasks:
     - name: "Manage HPC Nodes / Provision OpenCL environment"
@@ -45,7 +45,7 @@
         dev_opencl:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage HPC Nodes / serdigital64.development.dev_opencl"
+        name: "serdigital64.development.dev_opencl"
       when:
         - hpc_nodes_apps['opencl'] is defined
         - hpc_nodes_apps['opencl']
@@ -55,7 +55,7 @@
         dev_gpu_amd:
           deploy: true
       ansible.builtin.include_role:
-        name: "Manage HPC Nodes / serdigital64.hardware.hw_gpu_amd"
+        name: "serdigital64.hardware.hw_gpu_amd"
       when:
         - hpc_nodes_apps['gpu_amd'] is defined
         - hpc_nodes_apps['gpu_amd']
