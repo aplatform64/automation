@@ -147,17 +147,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.7.1]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/3.2.2...HEAD
-[3.2.2]: https://github.com/serdigital64/aplatform64/compare/3.1.0...3.2.2
-[3.1.0]: https://github.com/serdigital64/aplatform64/compare/3.0.0...3.1.0
-[3.0.0]: https://github.com/serdigital64/aplatform64/compare/2.2.3...3.0.0
-[2.2.3]: https://github.com/serdigital64/aplatform64/compare/2.2.0...2.2.3
-[2.1.0]: https://github.com/serdigital64/aplatform64/compare/2.0.0...2.1.0
-[2.0.0]: https://github.com/serdigital64/aplatform64/compare/1.12.0...2.0.0
-[1.12.0]: https://github.com/serdigital64/aplatform64/compare/1.11.0...1.12.0
-[1.11.0]: https://github.com/serdigital64/aplatform64/compare/1.10.0...1.11.0
-[1.10.0]: https://github.com/serdigital64/aplatform64/compare/1.9.0...1.10.0
-[1.9.0]: https://github.com/serdigital64/aplatform64/compare/1.8.3...1.9.0
-[1.8.3]: https://github.com/serdigital64/aplatform64/compare/1.8.1...1.8.3
-[1.8.1]: https://github.com/serdigital64/aplatform64/compare/1.7.1...1.8.1
-[1.7.1]: https://github.com/serdigital64/aplatform64/releases/tag/1.7.1
+[Unreleased]: https://github.com/aplatform64/aplatform64/compare/3.2.2...HEAD
+[3.2.2]: https://github.com/aplatform64/aplatform64/compare/3.1.0...3.2.2
+[3.1.0]: https://github.com/aplatform64/aplatform64/compare/3.0.0...3.1.0
+[3.0.0]: https://github.com/aplatform64/aplatform64/compare/2.2.3...3.0.0
+[2.2.3]: https://github.com/aplatform64/aplatform64/compare/2.2.0...2.2.3
+[2.1.0]: https://github.com/aplatform64/aplatform64/compare/2.0.0...2.1.0
+[2.0.0]: https://github.com/aplatform64/aplatform64/compare/1.12.0...2.0.0
+[1.12.0]: https://github.com/aplatform64/aplatform64/compare/1.11.0...1.12.0
+[1.11.0]: https://github.com/aplatform64/aplatform64/compare/1.10.0...1.11.0
+[1.10.0]: https://github.com/aplatform64/aplatform64/compare/1.9.0...1.10.0
+[1.9.0]: https://github.com/aplatform64/aplatform64/compare/1.8.3...1.9.0
+[1.8.3]: https://github.com/aplatform64/aplatform64/compare/1.8.1...1.8.3
+[1.8.1]: https://github.com/aplatform64/aplatform64/compare/1.7.1...1.8.1
+[1.7.1]: https://github.com/aplatform64/aplatform64/releases/tag/1.7.1
